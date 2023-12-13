@@ -10,9 +10,91 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_115027) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "type"
+    t.bigint "miss_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_categories_on_miss_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "invite_link"
+    t.bigint "year_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+    t.index ["year_id"], name: "index_groups_on_year_id"
+  end
+
+  create_table "misses", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "region"
+    t.string "age"
+    t.string "height"
+    t.string "photo"
+    t.bigint "year_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["year_id"], name: "index_misses_on_year_id"
+  end
+
+  create_table "my_top_12s", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_my_top_12s_on_miss_id"
+    t.index ["user_id"], name: "index_my_top_12s_on_user_id"
+  end
+
+  create_table "my_top_5s", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_my_top_5s_on_miss_id"
+    t.index ["user_id"], name: "index_my_top_5s_on_user_id"
+  end
+
+  create_table "my_winners", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_my_winners_on_miss_id"
+    t.index ["user_id"], name: "index_my_winners_on_user_id"
+  end
+
+  create_table "real_top_12s", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_real_top_12s_on_miss_id"
+  end
+
+  create_table "real_top_5s", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_real_top_5s_on_miss_id"
+  end
+
+  create_table "real_winners", force: :cascade do |t|
+    t.bigint "miss_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_real_winners_on_miss_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +108,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_115027) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "years", force: :cascade do |t|
+    t.integer "year"
+    t.date "date"
+    t.string "winner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "categories", "misses"
+  add_foreign_key "categories", "users"
+  add_foreign_key "groups", "users"
+  add_foreign_key "groups", "years"
+  add_foreign_key "misses", "years"
+  add_foreign_key "my_top_12s", "misses"
+  add_foreign_key "my_top_12s", "users"
+  add_foreign_key "my_top_5s", "misses"
+  add_foreign_key "my_top_5s", "users"
+  add_foreign_key "my_winners", "misses"
+  add_foreign_key "my_winners", "users"
+  add_foreign_key "real_top_12s", "misses"
+  add_foreign_key "real_top_5s", "misses"
+  add_foreign_key "real_winners", "misses"
 end
