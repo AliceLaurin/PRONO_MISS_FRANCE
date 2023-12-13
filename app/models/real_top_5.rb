@@ -1,3 +1,3 @@
 class RealTop5 < ApplicationRecord
-  belongs_to :miss
+  has_many :misses
 end

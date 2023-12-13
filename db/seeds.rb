@@ -15,6 +15,7 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
+GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all
 Miss.destroy_all
@@ -33,6 +34,8 @@ year_2 = Year.create!(
   date: "Wed, 18 Dec 2024 13:47:58.455031000 UTC +00:00"
 )
 year_2.save!
+puts "years created!"
+
 
 puts "creating users..."
 
@@ -47,6 +50,8 @@ user_2 = User.create!(
   password: "Laurin88"
 )
 user_2.save!
+puts "users created!"
+
 
 puts 'Creating misses...'
 
@@ -161,6 +166,9 @@ miss_10 = Miss.create!(
 )
 miss_10.save!
 
+puts "misses created!"
+
+
 # file = File.open(Rails.root.join("app/assets/images/avatars/avatar1.png"))
 # avatar_1.photo.attach(io: file, filename: "avatar1.png", content_type: "image/png")
 # avatar_1.save!
@@ -181,3 +189,20 @@ group_1 = Group.create!(
   year_id: year_2.id
 )
 group_1.save!
+puts "groups created!"
+
+
+puts 'Creating group_users...'
+
+group_user_1 = GroupUser.create!(
+  user_id: user_1.id,
+  group_id: group_1.id
+)
+group_user_1.save!
+
+group_user_2 = GroupUser.create!(
+  user_id: user_2.id,
+  group_id: group_1.id
+)
+group_user_2.save!
+puts "group_users created!"
