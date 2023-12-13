@@ -178,8 +178,6 @@ puts 'Creating groups...'
 
 group_1 = Group.create!(
   name: "Le groupe des boloss",
-  user_id: user_1.id,
-  user_id: user_2.id,
   year_id: year_2.id
 )
 group_1.save!
