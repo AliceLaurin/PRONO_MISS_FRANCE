@@ -15,6 +15,8 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
+Score.destroy_all
+RealWinner.destroy_all
 GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all
@@ -25,13 +27,15 @@ Year.destroy_all
 puts "creating years..."
 year_1 = Year.create!(
   year: "2024",
-  date: "Wed, 13 Dec 2023 13:47:58.455031000 UTC +00:00"
+  date: "Wed, 13 Dec 2023 13:47:58.455031000 UTC +00:00",
+  status: "terminé"
 )
 year_1.save!
 
 year_2 = Year.create!(
   year: "2025",
-  date: "Wed, 18 Dec 2024 13:47:58.455031000 UTC +00:00"
+  date: "Wed, 18 Dec 2024 13:47:58.455031000 UTC +00:00",
+  status: "en cours"
 )
 year_2.save!
 puts "years created!"
@@ -41,15 +45,24 @@ puts "creating users..."
 
 user_1 = User.create!(
   email: "laurin.alice@gmail.com",
-  password: "Laurin88"
+  password: "Laurin88",
+  pseudo: "Aliçounette"
 )
 user_1.save!
 
 user_2 = User.create!(
   email: "laurin@gmail.com",
-  password: "Laurin88"
+  password: "Laurin88",
+  pseudo: "Miss Alice"
 )
 user_2.save!
+
+user_3 = User.create!(
+  email: "rapha@gmail.com",
+  password: "Laurin88",
+  pseudo: "Rapha"
+)
+user_3.save!
 puts "users created!"
 
 
@@ -166,6 +179,17 @@ miss_10 = Miss.create!(
 )
 miss_10.save!
 
+miss_11 = Miss.create!(
+  first_name: "Indira",
+  last_name: "Ampiot",
+  region: "Guadeloupe",
+  age: "20 ans",
+  height: "1m78",
+  photo: "avatar1",
+  year_id: year_1.id
+)
+miss_11.save!
+
 puts "misses created!"
 
 
@@ -191,6 +215,20 @@ group_1 = Group.create!(
 group_1.save!
 puts "groups created!"
 
+group_2 = Group.create!(
+  name: "Le groupe des chtites miss",
+  year_id: year_2.id
+)
+group_2.save!
+puts "groups created!"
+
+group_3 = Group.create!(
+  name: "Le groupe des castor",
+  year_id: year_1.id
+)
+group_3.save!
+puts "groups created!"
+
 
 puts 'Creating group_users...'
 
@@ -206,3 +244,63 @@ group_user_2 = GroupUser.create!(
 )
 group_user_2.save!
 puts "group_users created!"
+
+group_user_3 = GroupUser.create!(
+  user_id: user_2.id,
+  group_id: group_2.id
+)
+group_user_3.save!
+puts "group_users created!"
+
+group_user_4 = GroupUser.create!(
+  user_id: user_2.id,
+  group_id: group_3.id
+)
+group_user_4.save!
+puts "group_users created!"
+
+group_user_5 = GroupUser.create!(
+  user_id: user_1.id,
+  group_id: group_3.id
+)
+group_user_5.save!
+
+group_user_6 = GroupUser.create!(
+  user_id: user_3.id,
+  group_id: group_3.id
+)
+group_user_6.save!
+puts "group_users created!"
+
+
+
+puts 'Creating real_winners...'
+real_winner_1 = RealWinner.create!(
+  year_id: year_1.id,
+  miss_france: miss_11.region
+)
+puts "real_winners created!"
+
+puts 'Creating score...'
+score_1 = Score.create!(
+  year_id: year_1.id,
+  user_id: user_2.id,
+  points: 120,
+)
+score_1.save!
+
+score_2 = Score.create!(
+  year_id: year_1.id,
+  user_id: user_1.id,
+  points: 160,
+)
+score_2.save!
+
+score_3 = Score.create!(
+  year_id: year_1.id,
+  user_id: user_3.id,
+  points: 20,
+)
+score_3.save!
+
+puts "score created!"

@@ -1,0 +1,32 @@
+<h1>Miss France <%= @year.year %></h1>
+
+<% if @year.status == "en cours" %>
+
+  Mes groupes
+
+  <% @this_year_groups.each do |group| %>
+    <ul>
+      <%= group.name %>
+      <%= link_to "voir", year_group_path(@year, group) %>
+    </ul>
+  <% end %>
+  <%= link_to "Créer un groupe", new_year_group_path(@year)%>
+
+<% else %>
+  <i class="fa-solid fa-crown"></i> Miss <%= @winner%>
+  <% @this_year_groups.each do |group| %>
+    <ul>
+      <%= group.name %>
+        <% @scores = [] %>
+      <% group.group_users.each do |group_user| %>
+        <% @scores << Score.where(year_id:@year.id, user_id: group_user.user_id).to_a %>
+      <% end %>
+        <% @sorted_scores = @scores.sort_by { |score| - score.last.points } %>
+        <% @sorted_scores.each do |score| %>
+          <ul>
+            <%=score.last.user.pseudo %> <%=score.last.points %> PTS
+          </ul>
+        <% end %>
+    </ul>
+  <% end %>
+<% end %>
