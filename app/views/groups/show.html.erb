@@ -1,0 +1,25 @@
+<h1> <%= @group.name %> </h1>
+
+Lien d'invitation :
+  <input type="text" value=<%="www.xxxxx.fr/group_users/new?group_id=#{@group.id}"%> readonly>
+
+<br>
+<% if @scores.flatten.empty? %>
+  Le classement n’est pas encore déterminé.
+<% else %>
+  Le classement
+  <% @sorted_scores.each do |score| %>
+    <ul>
+      <li><%=score.last.user.pseudo %> <%=score.last.points %> PTS</li>
+    </ul>
+  <% end %>
+<% end %>
+
+Les membres du groupe
+
+<% @group_users.each do |group_user| %>
+  <ul>
+    <%= group_user.user.pseudo %>
+    <%= group_user.user.photo %>
+  </ul>
+<% end %>

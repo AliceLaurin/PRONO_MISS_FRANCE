@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_14_063958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,14 +24,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "group_users", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "invite_link"
     t.bigint "year_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_groups_on_user_id"
     t.index ["year_id"], name: "index_groups_on_year_id"
   end
 
@@ -45,55 +52,98 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
     t.bigint "year_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "real_top_12_id"
+    t.bigint "real_top_5_id"
+    t.bigint "real_winner_id"
+    t.index ["real_top_12_id"], name: "index_misses_on_real_top_12_id"
+    t.index ["real_top_5_id"], name: "index_misses_on_real_top_5_id"
+    t.index ["real_winner_id"], name: "index_misses_on_real_winner_id"
     t.index ["year_id"], name: "index_misses_on_year_id"
   end
 
-  create_table "my_top_12s", force: :cascade do |t|
+  create_table "my_12_misses", force: :cascade do |t|
+    t.bigint "my_top_12_id", null: false
     t.bigint "miss_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_my_12_misses_on_miss_id"
+    t.index ["my_top_12_id"], name: "index_my_12_misses_on_my_top_12_id"
+  end
+
+  create_table "my_5_misses", force: :cascade do |t|
+    t.bigint "my_top_5_id", null: false
+    t.bigint "miss_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["miss_id"], name: "index_my_5_misses_on_miss_id"
+    t.index ["my_top_5_id"], name: "index_my_5_misses_on_my_top_5_id"
+  end
+
+  create_table "my_top_12s", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_my_top_12s_on_miss_id"
+    t.string "my_miss_france_guess"
     t.index ["user_id"], name: "index_my_top_12s_on_user_id"
   end
 
   create_table "my_top_5s", force: :cascade do |t|
-    t.bigint "miss_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_my_top_5s_on_miss_id"
     t.index ["user_id"], name: "index_my_top_5s_on_user_id"
   end
 
   create_table "my_winners", force: :cascade do |t|
-    t.bigint "miss_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_my_winners_on_miss_id"
     t.index ["user_id"], name: "index_my_winners_on_user_id"
   end
 
-  create_table "real_top_12s", force: :cascade do |t|
+  create_table "my_winners_misses", force: :cascade do |t|
+    t.bigint "my_winner_id", null: false
     t.bigint "miss_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_real_top_12s_on_miss_id"
+    t.index ["miss_id"], name: "index_my_winners_misses_on_miss_id"
+    t.index ["my_winner_id"], name: "index_my_winners_misses_on_my_winner_id"
+  end
+
+  create_table "real_top_12s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "year_id"
+    t.index ["year_id"], name: "index_real_top_12s_on_year_id"
   end
 
   create_table "real_top_5s", force: :cascade do |t|
-    t.bigint "miss_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_real_top_5s_on_miss_id"
+    t.bigint "year_id"
+    t.index ["year_id"], name: "index_real_top_5s_on_year_id"
   end
 
   create_table "real_winners", force: :cascade do |t|
-    t.bigint "miss_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["miss_id"], name: "index_real_winners_on_miss_id"
+    t.string "miss_france"
+    t.string "first_dauphine"
+    t.string "second_dauphine"
+    t.string "third_dauphine"
+    t.string "fourth_dauphine"
+    t.bigint "year_id"
+    t.index ["year_id"], name: "index_real_winners_on_year_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "year_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "points", default: 0
+    t.index ["user_id"], name: "index_scores_on_user_id"
+    t.index ["year_id"], name: "index_scores_on_year_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,6 +154,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pseudo"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -114,20 +166,30 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_13_124541) do
     t.string "winner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   add_foreign_key "categories", "misses"
   add_foreign_key "categories", "users"
-  add_foreign_key "groups", "users"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
   add_foreign_key "groups", "years"
+  add_foreign_key "misses", "real_top_12s"
+  add_foreign_key "misses", "real_top_5s"
+  add_foreign_key "misses", "real_winners"
   add_foreign_key "misses", "years"
-  add_foreign_key "my_top_12s", "misses"
+  add_foreign_key "my_12_misses", "misses"
+  add_foreign_key "my_12_misses", "my_top_12s"
+  add_foreign_key "my_5_misses", "misses"
+  add_foreign_key "my_5_misses", "my_top_5s"
   add_foreign_key "my_top_12s", "users"
-  add_foreign_key "my_top_5s", "misses"
   add_foreign_key "my_top_5s", "users"
-  add_foreign_key "my_winners", "misses"
   add_foreign_key "my_winners", "users"
-  add_foreign_key "real_top_12s", "misses"
-  add_foreign_key "real_top_5s", "misses"
-  add_foreign_key "real_winners", "misses"
+  add_foreign_key "my_winners_misses", "misses"
+  add_foreign_key "my_winners_misses", "my_winners"
+  add_foreign_key "real_top_12s", "years"
+  add_foreign_key "real_top_5s", "years"
+  add_foreign_key "real_winners", "years"
+  add_foreign_key "scores", "users"
+  add_foreign_key "scores", "years"
 end

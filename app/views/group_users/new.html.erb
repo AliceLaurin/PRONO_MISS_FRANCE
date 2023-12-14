@@ -1,0 +1,20 @@
+<h1>Invitation</h1>
+
+Vous êtes invité(e) à rejoindre le groupe "<%= @group.name %>"
+
+<br>
+Les membres du groupe :
+
+
+<% @group_users.each do |group_user| %>
+  <ul>
+    <%= group_user.user.pseudo %>
+    <%= group_user.user.photo %>
+  </ul>
+<% end %>
+
+<%= simple_form_for(@group_user) do |f| %>
+  <%= f.input :group_id, as: :hidden, input_html: { value: @group.id } %>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.button :submit, "Rejoindre"%>
+<% end %>

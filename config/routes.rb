@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :years, only: [:index, :show] do
-    resources :groups, only: [:new, :create, :show]
     resources :misses, only: [:index, :show]
     resources :my_top_12s, only: [:new, :create, :index]
     resources :my_top_5s, only: [:new, :create, :index]
@@ -16,8 +15,10 @@ Rails.application.routes.draw do
     resources :real_winners, only: [:show]
     resources :real_top12s, only: [:show]
     resources :real_top5s, only: [:show]
+    resources :groups, only: [:new, :create, :show]
   end
 
+  resources :group_users, only: [:new, :create]
 
   # Defines the root path route ("/")
   # root "posts#index"

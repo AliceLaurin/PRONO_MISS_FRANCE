@@ -1,3 +1,4 @@
 class RealWinner < ApplicationRecord
-  belongs_to :miss
+  has_many :misses
+  belongs_to :year
 end
