@@ -5,7 +5,6 @@ class GroupUsersController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_users = GroupUser.where(group_id: @group.id)
     @year = @group.year
-
   end
 
   def create
