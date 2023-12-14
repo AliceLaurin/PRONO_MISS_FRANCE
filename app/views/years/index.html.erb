@@ -1,6 +1,14 @@
 <h1>Bienvenue <%= current_user.pseudo %></h1>
 
-<% if @years.count > 1 %>
+
+  <ul>
+    Miss France <%= @running_year.year %>
+    <%= @running_year.date.strftime("%e %B %Y") %>
+    <%= @running_year.status %>
+    <%= link_to "voir", year_path(@running_year) %>
+  </ul>
+
+<% if @sorted_years.count > 1 %>
   <% @sorted_years.each do |year| %>
     <ul>
       Miss France <%= year.year %>
@@ -10,9 +18,11 @@
     </ul>
   <%end %>
 <% else %>
-  Miss France <%= @years.first.year %>
-  <%= @years.first.date.strftime("%e %B %Y") %>
-  <%= @years.first.status %>
-  <%= link_to "voir", year_path(@years.first) %>
-  <p>Vous n’avez pas d’autres élections dans votre historique</p>
+  <ul>
+    Miss France <%= @sorted_years.first.year %>
+    <%= @sorted_years.first.date.strftime("%e %B %Y") %>
+    <%= @sorted_years.first.status %>
+    <%= link_to "voir", year_path(@sorted_years.first) %>
+    <p>Vous n’avez pas d’autres élections dans votre historique</p>
+  </ul>
 <% end %>

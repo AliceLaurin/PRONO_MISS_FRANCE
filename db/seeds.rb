@@ -303,4 +303,26 @@ score_3 = Score.create!(
 )
 score_3.save!
 
+score_4 = Score.create!(
+  year_id: year_2.id,
+  user_id: user_1.id,
+  points: 20,
+)
+score_4.save!
+
+score_5 = Score.create!(
+  year_id: year_2.id,
+  user_id: user_2.id,
+  points: 120,
+)
+score_5.save!
+
+score_6 = Score.create!(
+  year_id: year_2.id,
+  user_id: user_3.id,
+  points: 420,
+)
+score_6.save!
+
+
 puts "score created!"

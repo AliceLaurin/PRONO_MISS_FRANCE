@@ -2,13 +2,14 @@ class YearsController < ApplicationController
 
   def index
     @years = Year.all
-    array_years = @years.to_a
+    @running_year = Year.where(status: "en cours").last
+    finished_years = Year.where(status: "terminé")
+    array_years = finished_years.to_a
     @sorted_years = array_years.sort_by { |year| - year.year}
   end
 
   def show
     @year = Year.find(params[:id])
-
     all_my_groups = current_user.groups.to_a
 
     @this_year_groups = all_my_groups.select do |group|
