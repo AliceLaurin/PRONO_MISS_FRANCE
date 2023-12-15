@@ -1,0 +1,10 @@
+Les 🔥
+
+<% @my_hot_misses.each do |category| %>
+  <% if category.miss.year == @year  %>
+  <ul>
+    <%= category.miss.region %>
+    <%= image_tag "#{category.miss.photo}.jpg"%>
+  </ul>
+  <% end %>
+<% end %>

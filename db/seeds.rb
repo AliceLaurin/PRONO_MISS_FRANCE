@@ -15,6 +15,7 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
+Category.destroy_all
 Score.destroy_all
 RealWinner.destroy_all
 GroupUser.destroy_all
@@ -74,7 +75,7 @@ miss_1 = Miss.create!(
   region: "Bourgogne",
   age: "18 ans",
   height: "1m76",
-  photo: "avatar1",
+  photo: "bourgogne",
   year_id: year_2.id
 )
 miss_1.save!
@@ -85,7 +86,7 @@ miss_2 = Miss.create!(
   region: "Aquitaine",
   age: "19 ans",
   height: "1m72",
-  photo: "avatar1",
+  photo: "Aquitaine",
   year_id: year_2.id
 )
 miss_2.save!
@@ -97,7 +98,7 @@ miss_3 = Miss.create!(
   region: "Alsace",
   age: "27 ans",
   height: "1m81",
-  photo: "avatar1",
+  photo: "Alsace",
   year_id: year_2.id
 )
 miss_3.save!
@@ -108,7 +109,7 @@ miss_4 = Miss.create!(
   region: "Auvergne",
   age: "22 ans",
   height: "1m73",
-  photo: "avatar1",
+  photo: "Auvergne",
   year_id: year_2.id
 )
 miss_4.save!
@@ -119,7 +120,7 @@ miss_5 = Miss.create!(
   region: "Bretagne",
   age: "24 ans",
   height: "1m77",
-  photo: "avatar1",
+  photo: "Bretagne",
   year_id: year_2.id
 )
 miss_5.save!
@@ -130,7 +131,7 @@ miss_6 = Miss.create!(
   region: "Centre-Val de Loire",
   age: "22 ans",
   height: "1m73",
-  photo: "avatar1",
+  photo: "Centre",
   year_id: year_2.id
 )
 miss_6.save!
@@ -141,7 +142,7 @@ miss_7 = Miss.create!(
   region: "Champagne-Ardenne",
   age: "21 ans",
   height: "1m70",
-  photo: "avatar1",
+  photo: "Champagne",
   year_id: year_2.id
 )
 miss_7.save!
@@ -152,7 +153,7 @@ miss_8 = Miss.create!(
   region: "Corse",
   age: "22 ans",
   height: "1m79",
-  photo: "avatar1",
+  photo: "Corse",
   year_id: year_2.id
 )
 miss_8.save!
@@ -163,7 +164,7 @@ miss_9 = Miss.create!(
   region: "Côte d'Azur",
   age: "19 ans",
   height: "1m76",
-  photo: "avatar1",
+  photo: "Cote d'azue",
   year_id: year_2.id
 )
 miss_9.save!
@@ -174,7 +175,7 @@ miss_10 = Miss.create!(
   region: "Franche-Comté",
   age: "24 ans",
   height: "1m78",
-  photo: "avatar1",
+  photo: "France Comte",
   year_id: year_2.id
 )
 miss_10.save!
@@ -185,7 +186,7 @@ miss_11 = Miss.create!(
   region: "Guadeloupe",
   age: "20 ans",
   height: "1m78",
-  photo: "avatar1",
+  photo: "France Comte",
   year_id: year_1.id
 )
 miss_11.save!
@@ -323,6 +324,21 @@ score_6 = Score.create!(
   points: 420,
 )
 score_6.save!
-
-
 puts "score created!"
+
+puts 'Creating categories...'
+category_1 = Category.create!(
+  user_id: user_1.id,
+  miss_id: miss_4.id,
+  critere: "bombe",
+)
+category_1.save!
+
+category_1 = Category.create!(
+  user_id: user_1.id,
+  miss_id: miss_11.id,
+  critere: "bombe",
+)
+category_1.save!
+
+puts "categories created!"

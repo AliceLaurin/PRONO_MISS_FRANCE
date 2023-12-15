@@ -1,0 +1,9 @@
+<div data-autocomplete-search-target = "list">
+<% @sorted_misses.each do |miss| %>
+  <ul>
+    <%= miss.region %>
+    <%= image_tag "#{miss.photo}.jpg"%>
+    <%= link_to "voir", year_miss_path(@year, miss) %>
+  </ul>
+<% end %>
+</div>
