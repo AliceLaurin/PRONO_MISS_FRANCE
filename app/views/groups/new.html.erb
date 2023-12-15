@@ -1,0 +1,8 @@
+<h1>Miss France <%= @year.year %></h1>
+
+Créer un groupe
+
+<%= simple_form_for([@year, @group]) do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit, "Valider"%>
+<% end %>
