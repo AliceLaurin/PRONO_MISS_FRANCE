@@ -1,10 +1,29 @@
 <h1>Les miss</h1>
 
-<% @sorted_misses.each do |miss| %>
-  <ul>
-    <%= miss.region %>
-    <%= miss.photo %>
-  </ul>
-<% end %>
+<%# faire en sorte que les miss triées s'affichent par ordre alphabetique %>
+<%# faire en sorte qu'on ne puisse avoir qu'une seule catégories par miss. Si j'en créé une, ca supprimer celle d'avant %>
+
+<div data-controller="autocomplete-search">
+  <div>
+    <div>
+      <div>
+        <%= form_with url: year_misses_path, method: :get, html: { data: {autocomplete_search_target: 'form'}} do%>
+        <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Rechercher une miss",
+        data: { autocomplete_search_target: 'input', action: "keyup->autocomplete-search#autocomplete" }%>
+      </div>
+      <div>
+        <%= button_tag(type: "submit") do %>
+          <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+        <% end %>
+      </div>
+  <% end %>
 
 
+<%= render "misses/list" %>
+
+Mes miss catégorisées
+<br>
+
+<%= render "misses/category" %>

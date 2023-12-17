@@ -1,0 +1,11 @@
+<%= @miss.region %>
+<%= image_tag "#{@miss.photo}.jpg"%>
+<%= @miss.age %>
+<%= @miss.height %>
+
+<%= simple_form_for([@miss, @category], url: year_miss_categories_path(@year, @miss)) do |f| %>
+  <%= f.input :critere %>
+  <%= f.button :submit, "Valider" %>
+<% end %>
+
+
