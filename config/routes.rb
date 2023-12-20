@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     resources :groups, only: [:new, :create, :show]
-    resources :my_top_12s, only: [:new, :create, :index, :show]
+    resources :my_top_12s, only: [:new, :create, :index, :show] do
+      resources :my_12_misses, only: [:new, :create, :delete]
+    end
     resources :my_top_5s, only: [:new, :create, :index, :show] do
-      resources :my_5_misses, only: [:new, :create]
+      resources :my_5_misses, only: [:new, :create, :delete]
     end
     resources :my_winners, only: [:new, :create, :index, :show] do
-      resources :my_winners_misses, only: [:new, :create]
+      resources :my_winners_misses, only: [:new, :create, :delete]
     end
     resources :real_winners, only: [:show]
     resources :real_top12s, only: [:show]
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
       resources :categories, only: [:new, :create]
     end
 
-    resources :my_12_misses, only: [:new, :create]
 
   end
 
