@@ -15,6 +15,8 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
+My12Miss.destroy_all
+MyTop12.destroy_all
 Category.destroy_all
 Score.destroy_all
 RealWinner.destroy_all
@@ -342,3 +344,31 @@ category_1 = Category.create!(
 category_1.save!
 
 puts "categories created!"
+
+puts 'Creating My Top 12'
+my_top_12_1 = MyTop12.create!(
+  user_id: user_1.id,
+)
+my_top_12_1.save!
+
+my_top_12_2 = MyTop12.create!(
+  user_id: user_2.id,
+)
+my_top_12_2.save!
+puts "my top 12 created!"
+
+puts 'Creating My 12 misses'
+
+my_12_miss_1 = My12Miss.create!(
+  miss_id: miss_11.id,
+  my_top_12_id: my_top_12_1.id,
+)
+my_12_miss_1.save!
+
+my_12_miss_2 = My12Miss.create!(
+  miss_id: miss_1.id,
+  my_top_12_id: my_top_12_2.id,
+)
+my_12_miss_1.save!
+
+puts "My 12 missescreated!"
