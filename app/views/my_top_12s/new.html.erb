@@ -1,0 +1,10 @@
+<h1>Mon Top 15</h1>
+
+<% @miss_in_my_top.each do |miss|%>
+  <%= image_tag "#{miss.miss.photo}.jpg"%>
+<% end %>
+
+
+<% (15 - @number_of_miss_in_my_top).times do |i| %>
+<div><%= image_tag "add_miss.svg"%></div>
+<% end %>

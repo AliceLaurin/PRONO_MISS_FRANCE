@@ -11,6 +11,12 @@ class CategoriesController < ApplicationController
 
     @year = Year.find(params[:year_id])
 
+    # Find the existing category for the user and miss
+    existing_category = Category.find_by(user: current_user, miss: @miss)
+
+    # If an existing category is found, delete it
+    existing_category.destroy if existing_category.present?
+
     @category = Category.new(params_category)
     @category.miss = @miss
     @category.user = current_user
@@ -20,6 +26,7 @@ class CategoriesController < ApplicationController
       render "misses/show" , status: :unprocessable_entity
     end
   end
+
 
   private
 

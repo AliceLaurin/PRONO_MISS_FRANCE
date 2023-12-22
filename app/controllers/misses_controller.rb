@@ -2,35 +2,36 @@ class MissesController < ApplicationController
 
   def index
     @year = Year.find(params[:year_id])
-    @misses = Miss.where(year_id: @year.id)
+    all_misses = Miss.where(year_id: @year.id)
 
-    @my_categories = Category.where(user_id: current_user)
-    miss_with_category = @my_categories.map do |category|
-      category.miss
-    end
+    # Find miss_ids with the desired category for the current user
+    miss_ids_with_category = Category.where(user_id: current_user)
+                                    .pluck(:miss_id)
+                                    .uniq
 
-    result_array = @misses.reject { |obj| miss_with_category.include?(obj) }
-    ids = result_array.map(&:id)
-    @active_record_instances = Miss.where(id: ids)
-
-# Now, active_record_instances is an ActiveRecord::Relation containing the desired instances
-
+    # Exclude misses with category for the current user
+    @active_record_instances = all_misses.where.not(id: miss_ids_with_category)
 
     # Filter misses based on the search query
     if params[:query].present?
-      @active_record_instances = @active_record_instances.where("LOWER(region) LIKE ?", "%#{params[:query].downcase}%")
+      @active_record_instances = @active_record_instances
+                                   .where("LOWER(region) LIKE ?", "%#{params[:query].downcase}%")
     end
 
-    @sorted_misses = @active_record_instances.sort_by { |miss| - miss.region }
+    @sorted_misses = @active_record_instances.sort_by { |miss| -miss.region }
     @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
+    @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
     @my_ok_misses = Category.where(user_id: current_user, critere: "mignonne")
+    @my_ok_misses_sorted = @my_ok_misses.sort_by { |category| - category.miss.region }
     @my_bof_misses = Category.where(user_id: current_user, critere: "pas ouf")
+    @my_bof_misses_sorted = @my_bof_misses.sort_by { |category| - category.miss.region }
     @my_berk_misses = Category.where(user_id: current_user, critere: "deg")
+    @my_berk_misses_sorted = @my_berk_misses.sort_by { |category| - category.miss.region }
+
     respond_to do |format|
       format.html
       format.text { render partial: "misses/list", locals: { misses: @misses }, formats: [:html] }
     end
-
   end
 
   def show
