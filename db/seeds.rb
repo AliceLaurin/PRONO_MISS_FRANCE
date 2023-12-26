@@ -15,8 +15,7 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
-My12Miss.destroy_all
-MyTop12.destroy_all
+Myfifteen.destroy_all
 Category.destroy_all
 Score.destroy_all
 RealWinner.destroy_all
@@ -345,44 +344,29 @@ category_1.save!
 
 puts "categories created!"
 
-puts 'Creating My Top 12'
-my_top_12_1 = MyTop12.create!(
+puts 'Creating My Top 15'
+myfifteen_1 = Myfifteen.create!(
   user_id: user_1.id,
-)
-my_top_12_1.save!
-
-if my_top_12_1.save
-  puts "MyTop12 record saved successfully!"
-else
-  puts "Error saving MyTop12 record:"
-  puts my_top_12_1.errors.full_messages.join(', ')
-end
-
-my_top_12_2 = MyTop12.create!(
-  user_id: user_2.id,
-)
-my_top_12_2.save!
-puts "my top 12 created!"
-
-if my_top_12_2.save
-  puts "MyTop12 record saved successfully!"
-else
-  puts "Error saving MyTop12 record:"
-  puts my_top_12_2.errors.full_messages.join(', ')
-end
-
-puts 'Creating My 12 misses'
-
-my_12_miss_1 = My12Miss.create!(
-  miss_id: miss_11.id,
-  my_top_12_id: my_top_12_1.id,
-)
-my_12_miss_1.save!
-
-my_12_miss_2 = My12Miss.create!(
   miss_id: miss_1.id,
-  my_top_12_id: my_top_12_2.id,
+  year_id: year_2.id
 )
-my_12_miss_2.save!
+myfifteen_1.save!
 
-puts "My 12 missescreated!"
+myfifteen_2 = Myfifteen.create!(
+  user_id: user_2.id,
+  miss_id: miss_7.id,
+  year_id: year_2.id
+
+)
+myfifteen_2.save!
+
+myfifteen_3 = Myfifteen.create!(
+  user_id: user_2.id,
+  miss_id: miss_2.id,
+  year_id: year_2.id
+
+)
+myfifteen_3.save!
+
+puts "my top 15 created!"
+

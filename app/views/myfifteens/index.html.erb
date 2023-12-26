@@ -1,0 +1,43 @@
+<div>
+  <h1>Mon top 15</h1>
+
+  <%@all_my_fifteens.each do |fifteen|%>
+  <ul>
+    <%= image_tag "#{fifteen.miss.photo}.jpg"%>
+    <%= fifteen.miss.region %>
+    <% if fifteen.my_miss_france_guess == "1" %>
+      <%= image_tag "couronne.svg" %>
+    <% end %>
+
+  </ul>
+  <% end %>
+
+  <% (15 - @all_my_fifteens.count).times do %>
+    <%= link_to new_year_myfifteen_path(@year) do %><%= image_tag "add_miss.svg" %><% end %>
+  <% end %>
+
+  <a href="">Valider</a>
+
+</div>
+
+<div class="dn">
+  <h1>Et les autres ?</h1>
+
+  <% @this_year_groups.each do |group| %>
+    <ul>
+      <%= group.name %>
+      <% group.group_users.each do |group_user| %>
+        <%= group_user.user.pseudo %>
+        <%= group_user.user.photo %>
+        <% @user_top_15 = Myfifteen.where(user_id: group_user.id).pluck(:miss_id).uniq%>
+        <% if @user_top_15 = [] %>
+          En attente du top 15
+        <% else %>
+        <% common_elements = @my_top_15 & @user_top_15 %>
+        Vous avez <%= common_elements.count %> miss en commun
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <% raise %>
+</div>

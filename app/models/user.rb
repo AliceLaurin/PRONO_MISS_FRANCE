@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :my_top_12s
+  has_many :myfifteens
 
 
   has_many :misses, through: :categories
