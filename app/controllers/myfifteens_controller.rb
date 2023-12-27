@@ -21,6 +21,12 @@ class MyfifteensController < ApplicationController
       if @selected_category.present?
         @misses = @misses.joins(:categories).where(categories: { critere: @selected_category })
       end
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
+      
     end
 
 
@@ -44,6 +50,7 @@ class MyfifteensController < ApplicationController
     def show
       @myfifteen = Myfifteen.find(params[:id])
     end
+
 
     private
 
