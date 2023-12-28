@@ -10,29 +10,36 @@
     <%# <%= miss.region %>
     <%# <%= image_tag "#{miss.photo}.jpg"%>
     <%# <%= simple_form_for([@year, @new_fifteen], url: year_myfifteens_path(@year), method: :post) do |f| %>
-      <%# <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %> 
+      <%# <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
       <%# <%= f.hidden_field :miss_id, value: miss.id %>
       <%# <%= f.button :submit, "Valider" %>
     <%# <% end %>
   <%# <% end %>
 <%# </div> %>
 
-<div data-modale-target="popin">
-  <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+<%= turbo_frame_tag "modal" do %>
+  <%= render "form", myfifteen: @new_fifteen %>
+<% end %>
+
+<%# <div data-controller="modale">
+  <div data-modale-target="popin">
+    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+</div> %>

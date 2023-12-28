@@ -2,4 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
-import "bootstrap"
+import * as bootstrap from "bootstrap"
+
+window.bootstrap = bootstrap;

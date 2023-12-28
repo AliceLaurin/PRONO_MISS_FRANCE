@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     resources :groups, only: [:new, :create, :show]
-    resources :myfifteens, only: [:new, :create, :index, :show, :destroy]
+    resources :myfifteens, only: [:new, :create, :index, :show, :destroy] do
+      get :new_modal, to: 'myfifteens#new_modal', as: "new_fifteen_modal"
+    end
     resources :myfives, only: [:new, :create, :index, :show]
     resources :my_winners, only: [:new, :create, :index, :show]
     resources :real_winners, only: [:show]

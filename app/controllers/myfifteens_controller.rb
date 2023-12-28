@@ -9,6 +9,10 @@ class MyfifteensController < ApplicationController
       @my_top_15 = Myfifteen.where(user_id: current_user.id).pluck(:miss_id).uniq
     end
 
+    def new_modal
+      @year = Year.find(params[:year_id])
+    end
+
     def new
       @new_fifteen = Myfifteen.new
       @year = Year.find(params[:year_id])
@@ -22,11 +26,6 @@ class MyfifteensController < ApplicationController
         @misses = @misses.joins(:categories).where(categories: { critere: @selected_category })
       end
 
-      respond_to do |format|
-        format.html
-        format.js
-      end
-      
     end
 
 

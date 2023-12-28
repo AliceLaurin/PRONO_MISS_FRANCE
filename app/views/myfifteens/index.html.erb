@@ -1,4 +1,4 @@
-<div data-controller="modale"  >
+<div data-controller="modale" >
   <h1>Mon top 15</h1>
 
   <%@all_my_fifteens.each do |fifteen|%>
@@ -12,8 +12,8 @@
   <% end %>
 
   <% (15 - @all_my_fifteens.count).times do %>
-  <div data-action="click->modale#open">
-    <%= link_to "#" do %>
+  <div>
+    <%= link_to new_year_myfifteen_path(@year), data: { turbo_frame: 'modal' } do %>
       <%= image_tag "add_miss.svg" %>
     <% end %>
   </div>

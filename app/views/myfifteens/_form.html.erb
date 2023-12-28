@@ -1,0 +1,16 @@
+  <h1>Choisir une miss</h1>
+
+  <%= form_tag new_year_myfifteen_path(@year), method: :get do %>
+    <%= select_tag 'category', options_for_select(@categories, @selected_category), include_blank: 'Select category' %>
+    <%= submit_tag 'Filter' %>
+  <% end %>
+
+  <% @misses.each do |miss| %>
+    <%= miss.region %>
+    <%= image_tag "#{miss.photo}.jpg"%>
+    <%= simple_form_for([@year, @new_fifteen], url: year_myfifteens_path(@year), method: :post) do |f| %>
+      <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
+      <%= f.hidden_field :miss_id, value: miss.id %>
+      <%= f.button :submit, "Valider" %>
+    <% end %>
+  <% end %>
