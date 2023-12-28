@@ -1,26 +1,15 @@
-<%# <div class="modal fade" id="newFifteenModal" tabindex="-1" aria-labelledby="newFifteenModalLabel" aria-hidden="true">
-  <h1>Choisir une miss</h1>
 
-  <%= form_tag new_year_myfifteen_path(@year), method: :get do %>
-    <%# <%= select_tag 'category', options_for_select(@categories, @selected_category), include_blank: 'Select category' %>
-    <%# <%= submit_tag 'Filter' %>
-  <%# <% end %>
+<main class="container">
+  <%= link_to "Back to myfifteens", year_myfifteens_path(@year) %>
 
-  <%# <% @misses.each do |miss| %>
-    <%# <%= miss.region %>
-    <%# <%= image_tag "#{miss.photo}.jpg"%>
-    <%# <%= simple_form_for([@year, @new_fifteen], url: year_myfifteens_path(@year), method: :post) do |f| %>
-      <%# <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
-      <%# <%= f.hidden_field :miss_id, value: miss.id %>
-      <%# <%= f.button :submit, "Valider" %>
-    <%# <% end %>
-  <%# <% end %>
-<%# </div> %>
+  <h1>
+    Choisir une miss
+  </h1>
 
-<%= turbo_frame_tag "modal" do %>
-  <%= render "form", myfifteen: @new_fifteen %>
-<% end %>
-
+  <%= turbo_frame_tag "new_myfifteen" do %>
+    <%= render "myfifteens/form", myfifteen: @myfifteen %>
+  <% end %>
+</main>
 <%# <div data-controller="modale">
   <div data-modale-target="popin">
     <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "myfifteens", @myfifteen %>
+<%= turbo_stream.update "new_myfifteen", "" %>
+
+
+<%= turbo_stream.replace "myfifteens_list" do %>
+  <%= render "myfifteens/myfifteen", all_my_fifteens: @all_my_fifteens %>
+<% end %>

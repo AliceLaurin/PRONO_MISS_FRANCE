@@ -1,18 +1,21 @@
 <div data-controller="modale" >
   <h1>Mon top 15</h1>
 
-  <%@all_my_fifteens.each do |fifteen|%>
-  <ul>
-    <%= image_tag "#{fifteen.miss.photo}.jpg"%>
-    <%= fifteen.miss.region %>
-    <% if fifteen.my_miss_france_guess == "1" %>
-      <%= image_tag "couronne.svg" %>
-    <% end %>
-  </ul>
-  <% end %>
+<%= turbo_frame_tag "myfifteens_list" do %>
+  <%= render "myfifteens/myfifteen", all_my_fifteens: @all_my_fifteens %>
+<% end %>
+
 
   <% (15 - @all_my_fifteens.count).times do %>
   <div>
+    <%= link_to "New myfifteen",
+                  new_year_myfifteen_path(@year),
+                  class: "btn btn-primary",
+                  data: { turbo_frame: "new_myfifteen" } %>
+    </div>
+
+    <%= turbo_frame_tag "new_myfifteen" %>
+
     <%= link_to new_year_myfifteen_path(@year), data: { turbo_frame: 'modal' } do %>
       <%= image_tag "add_miss.svg" %>
     <% end %>
@@ -37,7 +40,9 @@
         <% else %>
         <% common_elements = @my_top_15 & @user_top_15 %>
         Vous avez <%= common_elements.count %> miss en commun
-        <%= image_tag "pink_crown.svg" %> <%= Miss.where(id: Myfifteen.where(user_id: group_user.user_id,my_miss_france_guess: "1" ).last.miss_id).last.region  %>
+          <% unless Miss.where(id: Myfifteen.where(user_id: group_user.user_id,my_miss_france_guess: "1" )).empty? %>
+            <%= image_tag "pink_crown.svg" %> <%= Miss.where(id: Myfifteen.where(user_id: group_user.user_id,my_miss_france_guess: "1" ).last.miss_id).last.region%>
+          <% end %>
         <% end %>
       <% end %>
     </ul>

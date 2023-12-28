@@ -1,0 +1,10 @@
+
+<%@all_my_fifteens.each do |fifteen|%>
+  <ul>
+    <%= image_tag "#{fifteen.miss.photo}.jpg"%>
+    <%= fifteen.miss.region %>
+    <% if fifteen.my_miss_france_guess == "1" %>
+      <%= image_tag "couronne.svg" %>
+    <% end %>
+  </ul>
+<% end %>
