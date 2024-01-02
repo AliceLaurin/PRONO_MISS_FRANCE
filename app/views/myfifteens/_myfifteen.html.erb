@@ -1,8 +1,10 @@
-
+<%= turbo_frame_tag "myfifteen_#{myfifteen.id}" do %>
   <ul>
-    <%= image_tag "#{myfifteen.miss.photo}.jpg"%>
+    <%= image_tag "#{myfifteen.miss.photo}.jpg" %>
     <%= myfifteen.miss.region %>
     <% if myfifteen.my_miss_france_guess == "1" %>
       <%= image_tag "couronne.svg" %>
     <% end %>
+    <%= button_to 'Destroy', year_myfifteen_path(@year, myfifteen), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'destroy-button', 'data-url': year_myfifteen_path(@year, myfifteen), 'data-turbo-frame': "myfifteen_#{myfifteen.id}" %>
   </ul>
+<% end %>

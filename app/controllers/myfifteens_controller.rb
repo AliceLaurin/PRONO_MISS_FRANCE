@@ -45,6 +45,8 @@ class MyfifteensController < ApplicationController
           format.html { redirect_to year_myfifteens_path(@year) }
           format.turbo_stream
         end
+
+
       else
         render :new, status: :unprocessable_entity
       end
@@ -54,6 +56,16 @@ class MyfifteensController < ApplicationController
       @myfifteen = Myfifteen.find(params[:id])
     end
 
+
+    def destroy
+      @myfifteen = Myfifteen.find(params[:id])
+      @myfifteen.destroy
+
+      respond_to do |format|
+        format.html { redirect_to year_myfifteens_path(@year) }
+        format.turbo_stream
+      end
+    end
 
     private
 

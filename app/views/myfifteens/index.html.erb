@@ -1,23 +1,19 @@
 <div>
   <h1>Mon top 15</h1>
 
-  <div id="myfifteens">
+
+
+  <%= turbo_frame_tag "myfifteens" do %>
     <%= render @myfifteens %>
-  </div>
+  <% end %>
 
   <% (15 - @myfifteens.count).times do %>
     <div>
-      <%= link_to new_year_myfifteen_path(@year), data: { turbo_frame: "modal" } do %>
+      <%= link_to new_year_myfifteen_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
         <%= image_tag "add_miss.svg" %>
       <% end %>
     </div>
-    <%# <%= turbo_frame_tag "new_myfifteen"%>
   <% end %>
-
-
-
-  <a href="">Valider</a>
-
 </div>
 
 <div class="dn">

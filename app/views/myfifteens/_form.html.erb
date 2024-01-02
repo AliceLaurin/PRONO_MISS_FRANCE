@@ -10,37 +10,32 @@
   <%= submit_tag 'Filter' %>
 <% end %>
 
-<% @misses.each do |miss| %>
-  <%= miss.region %>
-  <%= image_tag "#{miss.photo}.jpg"%>
-  <%= simple_form_for([@year, @myfifteen]) do |f| %>
-    <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
-    <%= f.hidden_field :miss_id, value: miss.id %>
-    <%= f.button :submit, "Valider" %>
-  <% end %>
-<% end %>
-
-
-<%# <div id="carouselExample" class="carousel slide" data-controller="autoselect">
-  <div class="carousel-inner" data-autoselect-target="avatarSelect">
-
-    <div class="carousel-item active 1">
-      <div class="avatar-item">
-        <input type="radio" id="avatar1" name="url" value="avatar1">
-        <label class="avatar-img-wrapper" for="avatar1">
-          <%= image_tag "avatars/avatar1.png"%>
-        <%# </label>
-      </div>
-    </div> %>
-
-
-  <%# </div>
-  <button data-action="click->autoselect#select" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
   </button>
-  <button data-action="click->autoselect#select" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>  %>
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <% @misses.each do |miss| %>
+      <div class="carousel-item <%= 'active' if miss == @misses.first %>">
+        <div class="avatar-item">
+          <%= miss.region %>
+          <%= image_tag "#{miss.photo}.jpg"%>
+          <%= simple_form_for([@year, @myfifteen]) do |f| %>
+          <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
+          <%= f.hidden_field :miss_id, value: miss.id %>
+          <%= f.button :submit, "Valider" %>
+    <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
+</div>

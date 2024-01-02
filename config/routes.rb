@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     resources :groups, only: [:new, :create, :show]
-    resources :myfifteens, only: [:new, :create, :index, :show, :destroy] 
-    resources :myfives, only: [:new, :create, :index, :show]
-    resources :my_winners, only: [:new, :create, :index, :show]
+    resources :myfifteens, only: [:new, :create, :index, :show, :destroy]
+    resources :myfives, only: [:new, :create, :index, :show, :destroy]
+    resources :my_winners, only: [:new, :create, :index, :show, :destroy]
     resources :real_winners, only: [:show]
     resources :real_top12s, only: [:show]
     resources :real_top5s, only: [:show]
