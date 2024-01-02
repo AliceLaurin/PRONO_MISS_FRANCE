@@ -2,13 +2,10 @@ class MyfifteensController < ApplicationController
 
     def index
       @year = Year.find(params[:year_id])
-      @all_my_fifteens = Myfifteen.where(user_id: current_user, year_id: @year.id).to_a
+      @myfifteens = Myfifteen.where(user_id: current_user, year_id: @year.id).to_a
       all_my_groups = current_user.groups.to_a
       @this_year_groups = all_my_groups.select { |group| group.year_id == @year.id }
       @my_top_15 = Myfifteen.where(user_id: current_user.id).pluck(:miss_id).uniq
-
-      # Add this line to output debug information
-      puts "@all_my_fifteens: #{@all_my_fifteens.inspect}"
     end
 
     def new
@@ -40,9 +37,9 @@ class MyfifteensController < ApplicationController
 
       if  @myfifteen.save!
         # Reassign @all_my_fifteens after creating a new Myfifteen record
-        @all_my_fifteens = Myfifteen.where(user_id: current_user, year_id: @year.id).to_a
+        @myfifteens = Myfifteen.where(user_id: current_user, year_id: @year.id).to_a
         # Add debug output
-        puts "@all_my_fifteens after reassignment: #{@all_my_fifteens.inspect}"
+        puts "@all_my_fifteens after reassignment: #{@myfifteens.inspect}"
 
         respond_to do |format|
           format.html { redirect_to year_myfifteens_path(@year) }

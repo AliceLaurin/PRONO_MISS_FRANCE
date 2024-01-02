@@ -1,26 +1,20 @@
-<div data-controller="modale" >
+<div>
   <h1>Mon top 15</h1>
 
-<%= turbo_frame_tag "myfifteens_list" do %>
-  <%= render "myfifteens/myfifteen", all_my_fifteens: @all_my_fifteens %>
-<% end %>
-
-
-  <% (15 - @all_my_fifteens.count).times do %>
-  <div>
-    <%= link_to "New myfifteen",
-                  new_year_myfifteen_path(@year),
-                  class: "btn btn-primary",
-                  data: { turbo_frame: "new_myfifteen" } %>
-    </div>
-
-    <%= turbo_frame_tag "new_myfifteen" %>
-
-    <%= link_to new_year_myfifteen_path(@year), data: { turbo_frame: 'modal' } do %>
-      <%= image_tag "add_miss.svg" %>
-    <% end %>
+  <div id="myfifteens">
+    <%= render @myfifteens %>
   </div>
+
+  <% (15 - @myfifteens.count).times do %>
+    <div>
+      <%= link_to new_year_myfifteen_path(@year), data: { turbo_frame: "modal" } do %>
+        <%= image_tag "add_miss.svg" %>
+      <% end %>
+    </div>
+    <%# <%= turbo_frame_tag "new_myfifteen"%> 
   <% end %>
+
+
 
   <a href="">Valider</a>
 
