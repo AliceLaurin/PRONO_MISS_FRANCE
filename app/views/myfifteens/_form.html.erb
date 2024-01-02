@@ -1,6 +1,4 @@
-
-
-
+<h1>Choisir une miss</h1>
 <% if myfifteen.errors.any? %>
   <div class="alert alert-danger">
     <%= myfifteen.errors.full_messages.to_sentence %>
@@ -23,3 +21,26 @@
 <% end %>
 
 
+<%# <div id="carouselExample" class="carousel slide" data-controller="autoselect">
+  <div class="carousel-inner" data-autoselect-target="avatarSelect">
+
+    <div class="carousel-item active 1">
+      <div class="avatar-item">
+        <input type="radio" id="avatar1" name="url" value="avatar1">
+        <label class="avatar-img-wrapper" for="avatar1">
+          <%= image_tag "avatars/avatar1.png"%>
+        <%# </label>
+      </div>
+    </div> %>
+
+
+  <%# </div>
+  <button data-action="click->autoselect#select" class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button data-action="click->autoselect#select" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>  %>

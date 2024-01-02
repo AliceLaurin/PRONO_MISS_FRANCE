@@ -1,20 +1,19 @@
-import { Controller } from "@hotwired/stimulus"
-import * as bootstrap from "bootstrap"
+import { Controller } from "@hotwired/stimulus";
 
+// Connects to data-controller="modal"
 export default class extends Controller {
-  connect() {
-    this.modal = new bootstrap.Modal(this.element)
-  }
+  connect() {}
+  close(e) {
+    // Prevent default action
+    e.preventDefault();
+    // Remove from parent
+    const modal = document.getElementById("modal");
+    modal.innerHTML = "";
 
-  open() {
-    if (!this.modal.isOpened) {
-      this.modal.show()
-    }
-  }
+    // Remove the src attribute from the modal
+    modal.removeAttribute("src");
 
-  close(event) {
-    if (event.detail.success) {
-      this.modal.hide()
-    }
+    // Remove complete attribute
+    modal.removeAttribute("complete");
   }
 }

@@ -1,15 +1,16 @@
 
-<main class="container">
-  <%= link_to "Back to myfifteens", year_myfifteens_path(@year) %>
-
-  <h1>
-    Choisir une miss
-  </h1>
-
   <%= turbo_frame_tag "modal" do %>
-    <%= render "myfifteens/form", myfifteen: @myfifteen %>
+    <div class="modale">
+      <%= render "myfifteens/form", myfifteen: @myfifteen %>
+      <div>
+        <%= link_to "Cancel", "#", data: {
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button" %>
+      </div>
+    </div>
   <% end %>
-</main>
+
 <%# <div data-controller="modale">
   <div data-modale-target="popin">
     <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
