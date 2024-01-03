@@ -1,13 +1,8 @@
 <h1>Choisir une miss</h1>
-<% if myfifteen.errors.any? %>
+<% if myfive.errors.any? %>
   <div class="alert alert-danger">
-    <%= myfifteen.errors.full_messages.to_sentence %>
+    <%= myfive.errors.full_messages.to_sentence %>
   </div>
-<% end %>
-
-<%= form_tag new_year_myfifteen_path(@year), method: :get do %>
-  <%= select_tag 'category', options_for_select(@categories, @selected_category), include_blank: 'Select category' %>
-  <%= submit_tag 'Filter' %>
 <% end %>
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -26,8 +21,7 @@
         <div class="avatar-item">
           <%= miss.region %>
           <%= image_tag "#{miss.photo}.jpg"%>
-          <%= simple_form_for([@year, @myfifteen]) do |f| %>
-          <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
+          <%= simple_form_for([@year, @myfive]) do |f| %>
           <%= f.hidden_field :miss_id, value: miss.id %>
           <%= f.button :submit, "Valider" %>
     <% end %>

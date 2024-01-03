@@ -368,5 +368,21 @@ myfifteen_3 = Myfifteen.create!(
 )
 myfifteen_3.save!
 
-puts "my top 15 created!"
+myfifteen_4 = Myfifteen.create!(
+  user_id: user_2.id,
+  miss_id: miss_3.id,
+  year_id: year_2.id
 
+)
+myfifteen_4.save!
+
+myfifteen_5 = Myfifteen.create!(
+  user_id: user_2.id,
+  miss_id: miss_4.id,
+  year_id: year_2.id,
+  
+
+)
+myfifteen_5.save!
+
+puts "my top 15 created!"

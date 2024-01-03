@@ -1,0 +1,19 @@
+<div>
+  <h1>Mon top 5</h1>
+
+
+
+  <%= turbo_frame_tag "myfives" do %>
+    <%= render @myfives %>
+  <% end %>
+
+  <% (5 - @myfives.count).times do %>
+    <div>
+      <%= link_to new_year_myfife_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
+        <%= image_tag "add_miss.svg" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Valider", myfives_others_year_path(@year) %>

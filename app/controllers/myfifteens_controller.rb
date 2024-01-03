@@ -52,11 +52,6 @@ class MyfifteensController < ApplicationController
       end
     end
 
-    def show
-      @myfifteen = Myfifteen.find(params[:id])
-    end
-
-
     def destroy
       @myfifteen = Myfifteen.find(params[:id])
       @myfifteen.destroy
@@ -65,6 +60,18 @@ class MyfifteensController < ApplicationController
         format.html { redirect_to year_myfifteens_path(@year) }
         format.turbo_stream
       end
+    end
+
+    def show
+
+    end
+
+    def others
+      @year = Year.find(params[:id])
+      all_my_groups = current_user.groups.to_a
+      @this_year_groups = all_my_groups.select { |group| group.year_id == @year.id }
+      @my_top_15 = Myfifteen.where(user_id: current_user.id).pluck(:miss_id).uniq
+
     end
 
     private
