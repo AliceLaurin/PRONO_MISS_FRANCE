@@ -15,6 +15,7 @@
 # RealTop5.destroy_all
 # RealTop12.destroy_all
 # Category.destroy_all
+Myfive.destroy_all
 Myfifteen.destroy_all
 Category.destroy_all
 Score.destroy_all
@@ -380,7 +381,7 @@ myfifteen_5 = Myfifteen.create!(
   user_id: user_2.id,
   miss_id: miss_4.id,
   year_id: year_2.id,
-  
+
 
 )
 myfifteen_5.save!

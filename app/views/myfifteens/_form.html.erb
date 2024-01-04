@@ -26,10 +26,12 @@
         <div class="avatar-item">
           <%= miss.region %>
           <%= image_tag "#{miss.photo}.jpg"%>
-          <%= simple_form_for([@year, @myfifteen]) do |f| %>
-          <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
-          <%= f.hidden_field :miss_id, value: miss.id %>
-          <%= f.button :submit, "Valider" %>
+          <div class="m-5">
+            <%= simple_form_for([@year, @myfifteen]) do |f| %>
+            <%= f.input :my_miss_france_guess, as: :boolean, label: "C'est elle la Miss France!" %>
+            <%= f.hidden_field :miss_id, value: miss.id %>
+            <%= f.button :submit, "Valider" %>
+          </div>
     <% end %>
         </div>
       </div>

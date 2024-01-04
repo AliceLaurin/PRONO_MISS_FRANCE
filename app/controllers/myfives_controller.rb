@@ -11,10 +11,11 @@ class MyfivesController < ApplicationController
     def new
       @myfive = Myfive.new
       @year = Year.find(params[:year_id])
-      @myfifteens = Myfifteen.where(user_id: current_user, year_id: @year.id).to_a
-      @misses = @myfifteens.map do |myfifteen|
-        myfifteen.miss
-      end
+      @misses = Miss.joins(:myfifteens)
+                    .where(myfifteens: { user_id: current_user.id, year_id: @year.id })
+                    .where.not(id: Myfive.where.not(miss_id: nil).pluck(:miss_id).compact)
+      # If there is a miss already chosen in the current Myfive instance, exclude it
+      @misses = @misses.where.not(id: @myfive.miss_id) if @myfive.miss_id.present?
     end
 
 
