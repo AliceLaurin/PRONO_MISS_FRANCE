@@ -9,17 +9,11 @@
 #   end
 
 # MyWinner.destroy_all
-# MyTop5.destroy_all
-# MyTop12.destroy_all
-# RealWinner.destroy_all
-# RealTop5.destroy_all
-# RealTop12.destroy_all
-# Category.destroy_all
-Myfive.destroy_all
+MyWinner.destroy_all
+Mycinq.destroy_all
 Myfifteen.destroy_all
 Category.destroy_all
 Score.destroy_all
-RealWinner.destroy_all
 GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all
@@ -78,7 +72,10 @@ miss_1 = Miss.create!(
   age: "18 ans",
   height: "1m76",
   photo: "bourgogne",
-  year_id: year_2.id
+  year_id: year_2.id,
+  # fifteen: true,
+  five: true,
+
 )
 miss_1.save!
 
@@ -89,7 +86,10 @@ miss_2 = Miss.create!(
   age: "19 ans",
   height: "1m72",
   photo: "Aquitaine",
-  year_id: year_2.id
+  year_id: year_2.id,
+  # fifteen: true,
+  five: true,
+
 )
 miss_2.save!
 
@@ -112,7 +112,8 @@ miss_4 = Miss.create!(
   age: "22 ans",
   height: "1m73",
   photo: "Auvergne",
-  year_id: year_2.id
+  year_id: year_2.id,
+  five: true,
 )
 miss_4.save!
 
@@ -189,7 +190,8 @@ miss_11 = Miss.create!(
   age: "20 ans",
   height: "1m78",
   photo: "France Comte",
-  year_id: year_1.id
+  year_id: year_1.id,
+  winner: true
 )
 miss_11.save!
 
@@ -275,15 +277,6 @@ group_user_6 = GroupUser.create!(
 group_user_6.save!
 puts "group_users created!"
 
-
-
-puts 'Creating real_winners...'
-real_winner_1 = RealWinner.create!(
-  year_id: year_1.id,
-  miss_france: miss_11.region
-)
-puts "real_winners created!"
-
 puts 'Creating score...'
 score_1 = Score.create!(
   year_id: year_1.id,
@@ -345,45 +338,44 @@ category_1.save!
 
 puts "categories created!"
 
-puts 'Creating My Top 15'
-myfifteen_1 = Myfifteen.create!(
-  user_id: user_1.id,
-  miss_id: miss_1.id,
-  year_id: year_2.id
-)
-myfifteen_1.save!
+# puts 'Creating My Top 15'
+# myfifteen_1 = Myfifteen.create!(
+#   user_id: user_1.id,
+#   miss_id: miss_1.id,
+#   year_id: year_2.id
+# )
+# myfifteen_1.save!
 
-myfifteen_2 = Myfifteen.create!(
-  user_id: user_2.id,
-  miss_id: miss_7.id,
-  year_id: year_2.id
+# myfifteen_2 = Myfifteen.create!(
+#   user_id: user_2.id,
+#   miss_id: miss_7.id,
+#   year_id: year_2.id
 
-)
-myfifteen_2.save!
+# )
+# myfifteen_2.save!
 
-myfifteen_3 = Myfifteen.create!(
-  user_id: user_2.id,
-  miss_id: miss_2.id,
-  year_id: year_2.id
+# myfifteen_3 = Myfifteen.create!(
+#   user_id: user_2.id,
+#   miss_id: miss_2.id,
+#   year_id: year_2.id
 
-)
-myfifteen_3.save!
+# )
+# myfifteen_3.save!
 
-myfifteen_4 = Myfifteen.create!(
-  user_id: user_2.id,
-  miss_id: miss_3.id,
-  year_id: year_2.id
+# myfifteen_4 = Myfifteen.create!(
+#   user_id: user_2.id,
+#   miss_id: miss_3.id,
+#   year_id: year_2.id
 
-)
-myfifteen_4.save!
+# )
+# myfifteen_4.save!
 
-myfifteen_5 = Myfifteen.create!(
-  user_id: user_2.id,
-  miss_id: miss_4.id,
-  year_id: year_2.id,
+# myfifteen_5 = Myfifteen.create!(
+#   user_id: user_2.id,
+#   miss_id: miss_4.id,
+#   year_id: year_2.id,
 
+# )
+# myfifteen_5.save!
 
-)
-myfifteen_5.save!
-
-puts "my top 15 created!"
+# puts "my top 15 created!"

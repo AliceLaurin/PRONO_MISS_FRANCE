@@ -1,0 +1,24 @@
+
+<% if @misses.empty? %>
+  <h1>Le vrai top 15</h1>
+  Top 15 en attente....
+<% else %>
+  <h1>Le vrai top 15</h1>
+  <p>Vous avez trouvé <%=@number_of_common_misses%> miss sur 15 !</p>
+  <p>+ <%=@points%> points</p>
+
+  <%@misses.each do |miss| %>
+  <ul>
+    <li>
+      <% if @common_miss_ids.include?(miss.id) %>
+        j'avais trouvé cette miss
+      <% end %>
+      <%= image_tag "#{miss.photo}.jpg" %>
+      <%=miss.region %>
+      <% if miss.fifteen = true %>
+        dans le vrai top 15
+      <% end %>
+    </li>
+  </ul>
+  <% end %>
+<% end %>

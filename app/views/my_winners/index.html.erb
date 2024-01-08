@@ -1,0 +1,19 @@
+<div>
+  <h1>Ma finale</h1>
+
+
+
+  <%= turbo_frame_tag "my_winners" do %>
+    <%= render @my_winners %>
+  <% end %>
+
+  <% (5 - @my_winners.count).times do %>
+    <div>
+      <%= link_to new_year_my_winner_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
+        <%= image_tag "add_miss.svg" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "Valider", myfifteens_others_year_path(@year) %>

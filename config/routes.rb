@@ -9,14 +9,16 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     get 'myfifteens/others', to: 'myfifteens#others', on: :member
-    get 'myfives/others', to: 'myfives#others', on: :member
+    get 'mycinqs/others', to: 'mycinqs#others', on: :member
+    get 'realfifteen', to: 'pages#realfifteen', on: :member
+    get 'realcinq', to: 'pages#realcinq', on: :member
+    get 'real_winner', to: 'pages#real_winner', on: :member
+    get 'realclassement', to: 'pages#realclassement', on: :member
+    get 'myclassement', to: 'pages#myclassement', on: :member
     resources :groups, only: [:new, :create, :show]
     resources :myfifteens, only: [:new, :create, :index, :show, :destroy]
-    resources :myfives, only: [:new, :create, :index, :show, :destroy]
+    resources :mycinqs, only: [:new, :create, :index, :show, :destroy]
     resources :my_winners, only: [:new, :create, :index, :show, :destroy]
-    resources :real_winners, only: [:show]
-    resources :real_top12s, only: [:show]
-    resources :real_top5s, only: [:show]
     resources :misses, only: [:index, :show] do
       resources :categories, only: [:new, :create]
     end

@@ -1,7 +1,7 @@
 <h1>Choisir une miss</h1>
-<% if myfive.errors.any? %>
+<% if mycinq.errors.any? %>
   <div class="alert alert-danger">
-    <%= myfive.errors.full_messages.to_sentence %>
+    <%= mycinq.errors.full_messages.to_sentence %>
   </div>
 <% end %>
 
@@ -22,7 +22,7 @@
           <%= miss.region %>
           <%= image_tag "#{miss.photo}.jpg"%>
           <div class="m-5">
-            <%= simple_form_for([@year, @myfive]) do |f| %>
+            <%= simple_form_for([@year, @mycinq]) do |f| %>
             <%= f.hidden_field :miss_id, value: miss.id %>
             <%= f.button :submit, "Valider" %>
           </div>

@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :myfifteens
-
+  has_many :mycinqs
+  has_many :mywinners
 
   has_many :misses, through: :categories
   has_many :scores

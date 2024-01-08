@@ -13,9 +13,11 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <%= turbo_frame_tag "modal" %>
-    <%= yield %>
+    <div class="container">
+      <%= render "shared/navbar" %>
+      <%= render "shared/flashes" %>
+      <%= turbo_frame_tag "modal" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

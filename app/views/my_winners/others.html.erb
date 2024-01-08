@@ -1,0 +1,20 @@
+
+<div class="dn">
+  <h1>Et les autres ?</h1>
+  <% @this_year_groups.each do |group| %>
+    <ul>
+      <%= group.name %>
+      <% group.group_users.reject { |group_user| group_user.user == current_user }.each do |group_user| %>
+        <%= group_user.user.pseudo %>
+        <%= group_user.user.photo %>
+        <% @user_winner = MyWinner.where(user_id: group_user.user_id).pluck(:miss_id).uniq%>
+        <% if @user_winner == [] %>
+          En attente du classement final
+        <% else %>
+        <% common_elements = @my_winner & @user_winner %>
+        Vous avez <%= common_elements.count %> miss en commun
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "mycinq_#{mycinq.id}" do %>
+  <ul>
+    <%= image_tag "#{mycinq.miss.photo}.jpg" %>
+    <%= mycinq.miss.region %>
+    <%= button_to 'Destroy', year_mycinq_path(@year, mycinq), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'destroy-button', 'data-url': year_mycinq_path(@year, mycinq), 'data-turbo-frame': "mycinq_#{mycinq.id}" %>
+  </ul>
+<% end %>

@@ -1,0 +1,35 @@
+<h1>Choisir une miss</h1>
+<% if my_winner.errors.any? %>
+  <div class="alert alert-danger">
+    <%= my_winner.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <% @misses.each do |miss| %>
+      <div class="carousel-item <%= 'active' if miss == @misses.first %>">
+        <div class="avatar-item">
+          <%= miss.region %>
+          <%= image_tag "#{miss.photo}.jpg"%>
+          <div class="m-5">
+            <%= simple_form_for([@year, @my_winner]) do |f| %>
+            <%= f.hidden_field :miss_id, value: miss.id %>
+            <%= f.button :submit, "Valider" %>
+          </div>
+
+    <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

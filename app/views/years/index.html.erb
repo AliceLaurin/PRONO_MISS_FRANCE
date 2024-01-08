@@ -1,28 +1,55 @@
 <h1>Bienvenue <%= current_user.pseudo %></h1>
 
+<div class="list_of_years">
+  <%= link_to year_path(@running_year) do %>
+    <div class="card_year">
+      <div class="title_year">
+        <h3>Miss France <%= @running_year.year %></h3>
+      </div>
+      <div class="title_year">
+        <h4><i class="fa-regular fa-calendar"></i><%= I18n.l @running_year.date, format: :long %></h4>
+      </div>
+      <div class="status_running">
+        <div class="status_text"><%= @running_year.status %></div>
+      </div>
+    </div>
+  <% end %>
 
-  <ul>
-    Miss France <%= @running_year.year %>
-    <%= @running_year.date.strftime("%e %B %Y") %>
-    <%= @running_year.status %>
-    <%= link_to "voir", year_path(@running_year) %>
-  </ul>
-
-<% if @sorted_years.count > 1 %>
+  <% if @sorted_years.count > 1 %>
   <% @sorted_years.each do |year| %>
-    <ul>
-      Miss France <%= year.year %>
-      <%= year.date.strftime("%e %B %Y") %>
-      <%= year.status %>
-      <%= link_to "voir", year_path(year) %>
-    </ul>
+    <%= link_to year_path(year) do %>
+      <div class="card_year">
+        <div class="title_year">
+          <h3>Miss France <%= year.year %></h3>
+        </div>
+        <div class="title_year">
+          <h4><i class="fa-regular fa-calendar"></i><%= I18n.l year.date, format: :long %></h4>
+        </div>
+        <div class="statys_over">
+          <div class="status_text"><%= year.status %></div>
+        </div>
+      </div>
+    <% end %>
   <%end %>
-<% else %>
-  <ul>
-    Miss France <%= @sorted_years.first.year %>
-    <%= @sorted_years.first.date.strftime("%e %B %Y") %>
-    <%= @sorted_years.first.status %>
-    <%= link_to "voir", year_path(@sorted_years.first) %>
-    <p>Vous n’avez pas d’autres élections dans votre historique</p>
-  </ul>
-<% end %>
+
+
+  <% else %>
+    <%= link_to year_path(@sorted_years.first) do %>
+      <div class="card_year">
+        <div class="title_year">
+          <h3>Miss France <%= @sorted_years.first.year %></h3>
+        </div>
+        <div class="title_year">
+          <h4><i class="fa-regular fa-calendar"></i><%= I18n.l @sorted_years.first.date, format: :long %></h4>
+        </div>
+        <div class="status_over">
+          <div class="status_text"><%= @sorted_years.first.status %></div>
+        </div>
+      </div>
+    <% end %>
+    <div class="no_more_box">
+      <div class="no_more_election">Vous n’avez pas d’autres élections dans votre historique</div>
+    </div>
+  <% end %>
+
+</div>

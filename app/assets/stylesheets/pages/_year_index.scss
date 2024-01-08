@@ -1,0 +1,77 @@
+.list_of_years{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card_year{
+  width: 310px;
+  height: 174px;
+  border-radius: 20px;
+  background: linear-gradient(#7E85C3, #5B65AE);
+  // margin-left: 45px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.status_running{
+ position: absolute;
+ bottom: 140px;
+ left: 230px;
+ width: 56px;
+ height: 21px;
+ background: linear-gradient(#D1589E, #BF68E1);
+ border-radius: 10px ;
+ padding-top: 2px;
+}
+
+.status_over{
+  position: absolute;
+  bottom: 140px;
+  left: 230px;
+  width: 56px;
+  height: 21px;
+  background: rgba(217, 217, 217, 0.4); /* Use RGBA for semi-transparent background */
+  border-radius: 10px ;
+  padding-top: 2px;
+ }
+
+.status_text{
+  font-size: 10px;
+  font-family: 'Albert Sans Medium', sans-serif;
+  color:white;
+  text-decoration: none;
+  text-align: center;
+ }
+
+.title_year{
+  text-align: center;
+
+}
+
+a:link{
+  text-decoration: none;
+}
+
+.fa-regular{
+  margin-right: 10px;
+}
+
+
+.no_more_box{
+  width: 265px;
+  height: 46px;
+  margin-top: 25px;
+}
+
+.no_more_election{
+  color: #FFF;
+  font-family: Albert Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

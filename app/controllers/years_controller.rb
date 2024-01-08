@@ -17,8 +17,7 @@ class YearsController < ApplicationController
     end
 
     if @year.status == "terminé"
-      winners = RealWinner.where(year_id: @year.id)
-      @winner = winners.last.miss_france
+      @winner = Miss.where(year_id: @year.id, winner: true).last.region
     end
   end
 

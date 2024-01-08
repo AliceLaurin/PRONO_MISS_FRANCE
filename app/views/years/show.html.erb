@@ -1,18 +1,35 @@
-<h1>Miss France <%= @year.year %></h1>
 
 <% if @year.status == "en cours" %>
+  <div class="status_running_show">
+    <div class="status_text"><%= @year.status %></div>
+  </div>
+  <div><h1>Miss France <%= @year.year %></h1></div>
 
-  Mes groupes
+  <h2>Mes groupes</h2>
+  <div class="list_of_groups">
+    <% @this_year_groups.each do |group| %>
+      <%= link_to year_group_path(@year, group) do %>
+        <div class="card_group">
+          <div class="title_group">
+            <%= group.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to "Créer un groupe", new_year_group_path(@year), class: "main_button"%>
+  </div>
 
-  <% @this_year_groups.each do |group| %>
-    <ul>
-      <%= group.name %>
-      <%= link_to "voir", year_group_path(@year, group) %>
-    </ul>
-  <% end %>
-  <%= link_to "Créer un groupe", new_year_group_path(@year)%>
+
+
+  <%= link_to "mes classements", myclassement_year_path(@year) %>
+  <%= link_to "vrais classements", realclassement_year_path(@year) %>
+
 
 <% else %>
+  <h1>Miss France <%= @year.year %></h1>
+  <div class="status_running">
+    <div class="status_text"><%= @year.status %></div>
+  </div>
   <i class="fa-solid fa-crown"></i> Miss <%= @winner%>
   <% @this_year_groups.each do |group| %>
     <ul>

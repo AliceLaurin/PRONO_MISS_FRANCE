@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_24_131103) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_08_171817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,12 +52,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_131103) do
     t.bigint "year_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "real_top_12_id"
-    t.bigint "real_top_5_id"
-    t.bigint "real_winner_id"
-    t.index ["real_top_12_id"], name: "index_misses_on_real_top_12_id"
-    t.index ["real_top_5_id"], name: "index_misses_on_real_top_5_id"
-    t.index ["real_winner_id"], name: "index_misses_on_real_winner_id"
+    t.boolean "fifteen"
+    t.boolean "five"
+    t.boolean "winner"
     t.index ["year_id"], name: "index_misses_on_year_id"
   end
 
@@ -72,6 +69,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_131103) do
     t.index ["year_id"], name: "index_my_winners_on_year_id"
   end
 
+  create_table "mycinqs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "miss_id"
+    t.bigint "year_id"
+    t.index ["miss_id"], name: "index_mycinqs_on_miss_id"
+    t.index ["user_id"], name: "index_mycinqs_on_user_id"
+    t.index ["year_id"], name: "index_mycinqs_on_year_id"
+  end
+
   create_table "myfifteens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -84,49 +92,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_131103) do
     t.index ["year_id"], name: "index_myfifteens_on_year_id"
   end
 
-  create_table "myfives", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "miss_id"
-    t.bigint "year_id"
-    t.index ["miss_id"], name: "index_myfives_on_miss_id"
-    t.index ["user_id"], name: "index_myfives_on_user_id"
-    t.index ["year_id"], name: "index_myfives_on_year_id"
-  end
-
-  create_table "real_top_12s", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "year_id"
-    t.index ["year_id"], name: "index_real_top_12s_on_year_id"
-  end
-
-  create_table "real_top_5s", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "year_id"
-    t.index ["year_id"], name: "index_real_top_5s_on_year_id"
-  end
-
-  create_table "real_winners", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "miss_france"
-    t.string "first_dauphine"
-    t.string "second_dauphine"
-    t.string "third_dauphine"
-    t.string "fourth_dauphine"
-    t.bigint "year_id"
-    t.index ["year_id"], name: "index_real_winners_on_year_id"
-  end
-
   create_table "scores", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "year_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "points", default: 0
+    t.boolean "points_15"
     t.index ["user_id"], name: "index_scores_on_user_id"
     t.index ["year_id"], name: "index_scores_on_year_id"
   end
@@ -159,22 +131,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_131103) do
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "groups", "years"
-  add_foreign_key "misses", "real_top_12s"
-  add_foreign_key "misses", "real_top_5s"
-  add_foreign_key "misses", "real_winners"
   add_foreign_key "misses", "years"
   add_foreign_key "my_winners", "misses"
   add_foreign_key "my_winners", "users"
   add_foreign_key "my_winners", "years"
+  add_foreign_key "mycinqs", "misses"
+  add_foreign_key "mycinqs", "users"
+  add_foreign_key "mycinqs", "years"
   add_foreign_key "myfifteens", "misses"
   add_foreign_key "myfifteens", "users"
   add_foreign_key "myfifteens", "years"
-  add_foreign_key "myfives", "misses"
-  add_foreign_key "myfives", "users"
-  add_foreign_key "myfives", "years"
-  add_foreign_key "real_top_12s", "years"
-  add_foreign_key "real_top_5s", "years"
-  add_foreign_key "real_winners", "years"
   add_foreign_key "scores", "users"
   add_foreign_key "scores", "years"
 end

@@ -7,7 +7,7 @@
       <% group.group_users.reject { |group_user| group_user.user == current_user }.each do |group_user| %>
         <%= group_user.user.pseudo %>
         <%= group_user.user.photo %>
-        <% @user_top_5 = Myfive.where(user_id: group_user.user_id).pluck(:miss_id).uniq%>
+        <% @user_top_5 = Mycinq.where(user_id: group_user.user_id).pluck(:miss_id).uniq%>
         <% if @user_top_5 == [] %>
           En attente du top 5
         <% else %>

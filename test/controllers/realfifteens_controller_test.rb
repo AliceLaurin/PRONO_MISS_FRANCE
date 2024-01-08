@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RealWinnerTest < ActiveSupport::TestCase
+class RealfifteensControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

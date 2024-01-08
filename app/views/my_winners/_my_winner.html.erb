@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "my_winner_#{my_winner.id}" do %>
+  <ul>
+    <%= image_tag "#{my_winner.miss.photo}.jpg" %>
+    <%= my_winner.miss.region %>
+    <%= button_to 'Destroy', year_my_winner_path(@year, my_winner), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'destroy-button', 'data-url': year_my_winner_path(@year, my_winner), 'data-turbo-frame': "my_winner_#{my_winner.id}" %>
+  </ul>
+<% end %>

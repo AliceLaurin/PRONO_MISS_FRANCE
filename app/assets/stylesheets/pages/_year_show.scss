@@ -1,0 +1,53 @@
+
+.list_of_groups{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card_group{
+  width: 310px;
+  height: 93px;
+  border-radius: 20px;
+  background: linear-gradient(#7E85C3, #5B65AE);
+  // margin-left: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Add this line */
+
+}
+
+
+.status_running_show{
+  width: 56px;
+  height: 21px;
+  background: linear-gradient(#D1589E, #BF68E1);
+  border-radius: 10px ;
+  padding-top: 2px;
+  margin-bottom: 10px;
+  // margin-left: 51px;
+ }
+
+ .status_over_show{
+   width: 56px;
+   height: 21px;
+   background: rgba(217, 217, 217, 0.4); /* Use RGBA for semi-transparent background */
+   border-radius: 10px ;
+   padding-top: 2px;
+  }
+
+  .title_group{
+    text-align: center;
+    font-family: 'Albert Sans ExtraBold', sans-serif;
+    font-size: 2Opx;
+    color:white;
+    // margin-bottom: 30px;
+    // margin-top: 50px;
+  }
+
+  a:link{
+    text-decoration: none;
+  }

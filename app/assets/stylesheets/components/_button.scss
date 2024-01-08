@@ -1,0 +1,17 @@
+.main_button {
+  height: 45px;
+  line-height: 45px; /* Added line height */
+  border-radius: 10px;
+  background: linear-gradient(#D1589E, #BF68E1);
+  font-family: 'Albert Sans SemiBold', sans-serif;
+  font-size: 18px;
+  color: white;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0 20px;
+  text-align: center; /* Center text horizontally */
+  display: inline-block;
+
+}
