@@ -5,25 +5,19 @@
   </div>
   <div><h1>Miss France <%= @year.year %></h1></div>
 
-  <h2>Mes groupes</h2>
+  <h4>Mes groupes</h4>
   <div class="list_of_groups">
     <% @this_year_groups.each do |group| %>
       <%= link_to year_group_path(@year, group) do %>
         <div class="card_group">
-          <div class="title_group">
-            <%= group.name %>
+          <div>
+            <h5><%= group.name %></h5>
           </div>
         </div>
       <% end %>
     <% end %>
     <%= link_to "Créer un groupe", new_year_group_path(@year), class: "main_button"%>
   </div>
-
-
-
-  <%= link_to "mes classements", myclassement_year_path(@year) %>
-  <%= link_to "vrais classements", realclassement_year_path(@year) %>
-
 
 <% else %>
   <h1>Miss France <%= @year.year %></h1>
@@ -47,3 +41,4 @@
     </ul>
   <% end %>
 <% end %>
+<%= render "shared/bottombar" %>

@@ -1,8 +1,5 @@
 <div>
   <h1>Mon top 15</h1>
-
-
-
   <%= turbo_frame_tag "myfifteens" do %>
     <%= render @myfifteens %>
   <% end %>
@@ -17,3 +14,4 @@
 </div>
 
 <%= link_to "Valider", myfifteens_others_year_path(@year) %>
+<%= render "shared/bottombar" %>

@@ -15,12 +15,16 @@
           <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
         <% end %>
       </div>
-  <% end %>
+      <% end %>
 
+<%= turbo_frame_tag "misses_list" do %>
+  <%= render "misses/list" %>
+<% end %>
 
-<%= render "misses/list" %>
-
-Mes miss catégorisées
+<h3>Mes miss catégorisées</h3>
 <br>
+<%= turbo_frame_tag "categorys" do %>
+  <%= render @categories %>
+<% end %>
 
-<%= render "misses/category" %>
+<%= render "shared/bottombar" %>

@@ -18,6 +18,9 @@ class MissesController < ApplicationController
                                    .where("LOWER(region) LIKE ?", "%#{params[:query].downcase}%")
     end
 
+    #  test pour faire comme myfifteens
+    @categories = Category.where(user_id: current_user)
+
     @sorted_misses = @active_record_instances.sort_by { |miss| -miss.region }
     @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
     @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
@@ -34,10 +37,10 @@ class MissesController < ApplicationController
     end
   end
 
-  def show
-    @miss = Miss.find(params[:id])
-    @year = Year.find(params[:year_id])
-    @category = Category.new(miss: @miss)
-  end
+  # def show
+  #   @miss = Miss.find(params[:id])
+  #   @year = Year.find(params[:year_id])
+  #   @category = Category.new(miss: @miss)
+  # end
 
 end

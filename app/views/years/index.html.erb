@@ -4,10 +4,10 @@
   <%= link_to year_path(@running_year) do %>
     <div class="card_year">
       <div class="title_year">
-        <h3>Miss France <%= @running_year.year %></h3>
+        <h2>Miss France <%= @running_year.year %></h2>
       </div>
       <div class="title_year">
-        <h4><i class="fa-regular fa-calendar"></i><%= I18n.l @running_year.date, format: :long %></h4>
+        <h5><i class="fa-regular fa-calendar"></i><%= I18n.l @running_year.date, format: :long %></h5>
       </div>
       <div class="status_running">
         <div class="status_text"><%= @running_year.status %></div>
@@ -20,10 +20,10 @@
     <%= link_to year_path(year) do %>
       <div class="card_year">
         <div class="title_year">
-          <h3>Miss France <%= year.year %></h3>
+          <h2>Miss France <%= year.year %></h2>
         </div>
         <div class="title_year">
-          <h4><i class="fa-regular fa-calendar"></i><%= I18n.l year.date, format: :long %></h4>
+          <h5><i class="fa-regular fa-calendar"></i><%= I18n.l year.date, format: :long %></h5>
         </div>
         <div class="statys_over">
           <div class="status_text"><%= year.status %></div>
@@ -37,10 +37,10 @@
     <%= link_to year_path(@sorted_years.first) do %>
       <div class="card_year">
         <div class="title_year">
-          <h3>Miss France <%= @sorted_years.first.year %></h3>
+          <h2>Miss France <%= @sorted_years.first.year %></h2>
         </div>
         <div class="title_year">
-          <h4><i class="fa-regular fa-calendar"></i><%= I18n.l @sorted_years.first.date, format: :long %></h4>
+          <h5><i class="fa-regular fa-calendar"></i><%= I18n.l @sorted_years.first.date, format: :long %></h5>
         </div>
         <div class="status_over">
           <div class="status_text"><%= @sorted_years.first.status %></div>

@@ -19,6 +19,7 @@
 body {
   background: linear-gradient(#383564, #585F9D);
   height: 100vh;
+  position: relative;
 }
 
 h1 {
@@ -31,6 +32,20 @@ h1 {
 }
 
 h2 {
+  font-family: 'Albert Sans ExtraBold', sans-serif;
+  font-size: 25px;
+  color:white;
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+
+h3 {
+  font-family: 'Albert Sans SemiBold', sans-serif;
+  font-size: 32px;
+  color:white;
+}
+
+h4 {
   font-family: 'Albert Sans SemiBold', sans-serif;
   font-size: 24px;
   color:white;
@@ -41,17 +56,19 @@ h2 {
 
 }
 
-h3 {
-  font-family: 'Albert Sans ExtraBold', sans-serif;
-  font-size: 25px;
-  color:white;
-  margin-bottom: 30px;
-  margin-top: 50px;
-}
-
-h4 {
+h5 {
   font-family: 'Albert Sans SemiBold', sans-serif;
   font-size: 18px;
   color:white;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 0px;
+  // margin-bottom: 20px;
+}
+
+p {
+  font-family: 'Albert Sans SemiBold', sans-serif;
+  font-size: 15px;
+  color:white;
+  text-align: center;
+  // margin-bottom: 20px;
 }
