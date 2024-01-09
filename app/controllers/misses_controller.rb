@@ -22,14 +22,14 @@ class MissesController < ApplicationController
     @categories = Category.where(user_id: current_user)
 
     @sorted_misses = @active_record_instances.sort_by { |miss| -miss.region }
-    @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
-    @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
-    @my_ok_misses = Category.where(user_id: current_user, critere: "mignonne")
-    @my_ok_misses_sorted = @my_ok_misses.sort_by { |category| - category.miss.region }
-    @my_bof_misses = Category.where(user_id: current_user, critere: "pas ouf")
-    @my_bof_misses_sorted = @my_bof_misses.sort_by { |category| - category.miss.region }
-    @my_berk_misses = Category.where(user_id: current_user, critere: "deg")
-    @my_berk_misses_sorted = @my_berk_misses.sort_by { |category| - category.miss.region }
+    # @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
+    # @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
+    # @my_ok_misses = Category.where(user_id: current_user, critere: "mignonne")
+    # @my_ok_misses_sorted = @my_ok_misses.sort_by { |category| - category.miss.region }
+    # @my_bof_misses = Category.where(user_id: current_user, critere: "pas ouf")
+    # @my_bof_misses_sorted = @my_bof_misses.sort_by { |category| - category.miss.region }
+    # @my_berk_misses = Category.where(user_id: current_user, critere: "deg")
+    # @my_berk_misses_sorted = @my_berk_misses.sort_by { |category| - category.miss.region }
 
     respond_to do |format|
       format.html

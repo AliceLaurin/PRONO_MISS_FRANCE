@@ -1,8 +1,33 @@
-
-<%= turbo_frame_tag "category_#{category.id}" do %>
+<% if category.critere == "bombe" %>
+  <%= turbo_frame_tag "category_#{category.id}" do %>
   <ul>
-    <%= category.miss.region %>
+    <%= category.miss.region %> 🔥
     <%= image_tag "#{category.miss.photo}.jpg"%>
     <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
   </ul>
+  <% end %>
+<% elsif category.critere == "mignonne"%>
+  <%= turbo_frame_tag "category_#{category.id}" do %>
+  <ul>
+    <%= category.miss.region %> 💁🏼‍♀️
+    <%= image_tag "#{category.miss.photo}.jpg"%>
+    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
+  </ul>
+  <% end %>
+<% elsif category.critere == "deg"%>
+  <%= turbo_frame_tag "category_#{category.id}" do %>
+  <ul>
+    <%= category.miss.region %> 🚛
+    <%= image_tag "#{category.miss.photo}.jpg"%>
+    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
+  </ul>
+  <% end %>
+<% else%>
+  <%= turbo_frame_tag "category_#{category.id}" do %>
+  <ul>
+    <%= category.miss.region %> 🤔
+    <%= image_tag "#{category.miss.photo}.jpg"%>
+    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
+  </ul>
+  <% end %>
 <% end %>

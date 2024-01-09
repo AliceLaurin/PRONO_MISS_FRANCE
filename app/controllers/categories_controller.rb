@@ -30,16 +30,16 @@ class CategoriesController < ApplicationController
       @active_record_instances = @active_record_instances
                                    .where("LOWER(region) LIKE ?", "%#{params[:query].downcase}%")
     end
-    
+
     @sorted_misses = @active_record_instances.sort_by { |miss| -miss.region }
-    @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
-    @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
-    @my_ok_misses = Category.where(user_id: current_user, critere: "mignonne")
-    @my_ok_misses_sorted = @my_ok_misses.sort_by { |category| - category.miss.region }
-    @my_bof_misses = Category.where(user_id: current_user, critere: "pas ouf")
-    @my_bof_misses_sorted = @my_bof_misses.sort_by { |category| - category.miss.region }
-    @my_berk_misses = Category.where(user_id: current_user, critere: "deg")
-    @my_berk_misses_sorted = @my_berk_misses.sort_by { |category| - category.miss.region }
+    # @my_hot_misses = Category.where(user_id: current_user, critere: "bombe")
+    # @my_hot_misses_sorted = @my_hot_misses.sort_by { |category| - category.miss.region }
+    # @my_ok_misses = Category.where(user_id: current_user, critere: "mignonne")
+    # @my_ok_misses_sorted = @my_ok_misses.sort_by { |category| - category.miss.region }
+    # @my_bof_misses = Category.where(user_id: current_user, critere: "pas ouf")
+    # @my_bof_misses_sorted = @my_bof_misses.sort_by { |category| - category.miss.region }
+    # @my_berk_misses = Category.where(user_id: current_user, critere: "deg")
+    # @my_berk_misses_sorted = @my_berk_misses.sort_by { |category| - category.miss.region }
 
 
     if @category.save
@@ -56,7 +56,14 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
 
+  end
+
+  def update
+
+  end
+  
   private
 
   def params_category

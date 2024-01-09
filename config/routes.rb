@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :mycinqs, only: [:new, :create, :index, :show, :destroy]
     resources :my_winners, only: [:new, :create, :index, :show, :destroy]
     resources :misses, only: [:index, :show] do
-      resources :categories, only: [:new, :create]
+      resources :categories, only: [:new, :create, :edit, :update]
     end
 
 
