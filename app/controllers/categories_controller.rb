@@ -57,17 +57,36 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-
+    @category = Category.find(params[:id])
+    @miss = @category.miss
+    @year = @miss.year
   end
 
   def update
 
+    @category = Category.find(params[:id])
+    @miss = @category.miss
+    @year = @miss.year
+
+
+    if @category.update(params_category)
+      all_misses = Miss.where(year_id: @year.id)
+      miss_ids_with_category = Category.where(user_id: current_user).pluck(:miss_id).uniq
+      active_record_instances = all_misses.where.not(id: miss_ids_with_category)
+      @sorted_misses = active_record_instances.sort_by { |miss| -miss.region }
+      respond_to do |format|
+        format.html { redirect_to year_misses_path(@year) }
+        format.turbo_stream
+      end
+    else
+      render :edit
+    end
   end
-  
+
   private
 
   def params_category
-    params.require(:category).permit(:critere)
+    params.require(:category).permit(:critere, :miss_id)
   end
 
 

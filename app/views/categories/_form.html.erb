@@ -3,8 +3,8 @@
 <%= @miss.age %>
 <%= @miss.height %>
 
-<%= simple_form_for([@miss, @category], url: year_miss_categories_path(@year, @miss)) do |f| %>
-  <%= f.input :critere, collection: Category::CATEGORIES%>
+<%= simple_form_for([@year, @miss, @category]) do |f| %>
+  <%= f.input :critere, collection: Category::CATEGORIES %>
   <%= f.button :submit, "Valider" %>
 <% end %>
 

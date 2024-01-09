@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "categorys", @category %>
+<%= turbo_stream.update "misses_list", partial: "misses/list", locals: { sorted_misses: @sorted_misses } %>
+<%= turbo_stream.update "modal", "" %>

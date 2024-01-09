@@ -1,33 +1,34 @@
-<% if category.critere == "bombe" %>
-  <%= turbo_frame_tag "category_#{category.id}" do %>
-  <ul>
-    <%= category.miss.region %> 🔥
-    <%= image_tag "#{category.miss.photo}.jpg"%>
-    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
-  </ul>
+
+  <% if category.critere == "bombe" && category.miss.year == @year%>
+    <%= turbo_frame_tag "category_#{category.id}" do %>
+    <ul>
+      <%= category.miss.region %> 🔥
+      <%= image_tag "#{category.miss.photo}.jpg"%>
+      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
+    </ul>
+    <% end %>
+  <% elsif category.critere == "mignonne" && category.miss.year == @year%>
+    <%= turbo_frame_tag "category_#{category.id}" do %>
+    <ul>
+      <%= category.miss.region %> 💁🏼‍♀️
+      <%= image_tag "#{category.miss.photo}.jpg"%>
+      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
+    </ul>
+    <% end %>
+  <% elsif category.critere == "deg" && category.miss.year == @year%>
+    <%= turbo_frame_tag "category_#{category.id}" do %>
+    <ul>
+      <%= category.miss.region %> 🚛
+      <%= image_tag "#{category.miss.photo}.jpg"%>
+      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
+    </ul>
+    <% end %>
+  <% elsif category.critere == "pas ouf" && category.miss.year == @year%>
+    <%= turbo_frame_tag "category_#{category.id}" do %>
+    <ul>
+      <%= category.miss.region %> 🤔
+      <%= image_tag "#{category.miss.photo}.jpg"%>
+      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
+    </ul>
+    <% end %>
   <% end %>
-<% elsif category.critere == "mignonne"%>
-  <%= turbo_frame_tag "category_#{category.id}" do %>
-  <ul>
-    <%= category.miss.region %> 💁🏼‍♀️
-    <%= image_tag "#{category.miss.photo}.jpg"%>
-    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
-  </ul>
-  <% end %>
-<% elsif category.critere == "deg"%>
-  <%= turbo_frame_tag "category_#{category.id}" do %>
-  <ul>
-    <%= category.miss.region %> 🚛
-    <%= image_tag "#{category.miss.photo}.jpg"%>
-    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
-  </ul>
-  <% end %>
-<% else%>
-  <%= turbo_frame_tag "category_#{category.id}" do %>
-  <ul>
-    <%= category.miss.region %> 🤔
-    <%= image_tag "#{category.miss.photo}.jpg"%>
-    <%= link_to "voir", new_year_miss_category_path(@year, category.miss), remote: true, data: { turbo_frame: "modal" } %>
-  </ul>
-  <% end %>
-<% end %>
