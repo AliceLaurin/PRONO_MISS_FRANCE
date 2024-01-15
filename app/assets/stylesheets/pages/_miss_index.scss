@@ -1,0 +1,87 @@
+.card_miss{
+  width: 312px;
+  height: 93px;
+  border-radius: 10px;
+  background: linear-gradient(#7E85C3, #5B65AE);
+  // margin-left: 45px;
+  margin-bottom: 9px;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.miss_item{
+  display: flex;
+  align-items: center;
+}
+
+.miss_detail{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Adjust as needed */
+  width: 260px;
+}
+
+
+
+.miss_region{
+  text-align: left;
+  margin-left: 0;
+}
+
+.miss_region h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.input{
+  border-radius: 10px;
+  width: 288px;
+}
+
+.picto_miss{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+hr {
+  height: 2px;
+  background-color: white;
+  border: none;
+  width: 328px;
+}
+
+.search {
+  position: relative; /* Allows absolute positioning inside */
+}
+
+.miss-search-input{
+  border-radius: 10px;
+  width: 262px;
+  height: 37px;
+  background: #686FAE;
+  padding: 10px;
+  border: none; /* Removes the border */
+  margin-left: 20px;
+  margin-bottom: 12px;
+  color:white;
+
+}
+
+.miss-search-input::placeholder {
+  color: white;
+  opacity: 1;
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 15px;
+}
+
+.search-button {
+  position: absolute;
+  right: 40px; /* Adjust to place the button inside the input */
+  top: 5px; /* Adjust as per the input's height */
+  border: none;
+  background: none;
+  cursor: pointer; /* Changes cursor on hover */
+  /* If you need any padding or specific sizing for the button */
+}

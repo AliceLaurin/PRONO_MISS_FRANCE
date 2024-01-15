@@ -11,20 +11,22 @@
 @import "components/index";
 @import "pages/index";
 
+
 .container{
  padding-right: 32px;
  padding-left: 32px;
 }
 
 body {
-  background: linear-gradient(#383564, #585F9D);
-  height: 100vh;
+  background: linear-gradient(#585F9D, #383564);
+  // height: 100vh;
   position: relative;
+  margin-bottom: 100px;
 }
 
 h1 {
   font-family: 'Albert Sans ExtraBold', sans-serif;
-  font-size: 55px;
+  font-size: 52px;
   color:white;
   margin-right: 6px;
   margin-left: 6px;

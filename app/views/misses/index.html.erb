@@ -5,15 +5,16 @@
     <div>
       <div>
         <%= form_with url: year_misses_path, method: :get, html: { data: {autocomplete_search_target: 'form'}} do%>
-        <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Rechercher une miss",
-        data: { autocomplete_search_target: 'input', action: "keyup->autocomplete-search#autocomplete" }%>
-      </div>
-      <div>
-        <%= button_tag(type: "submit") do %>
-          <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
-        <% end %>
+        <div class="search">
+          <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Rechercher une miss...",
+          class: "miss-search-input",
+          data: { autocomplete_search_target: 'input', action: "keyup->autocomplete-search#autocomplete" }%>
+          <%= button_tag(type: "submit", class: "search-button") do %>
+              <%= image_tag "search.svg" %>
+          <% end %>
+        </div>
       </div>
       <% end %>
 
@@ -21,8 +22,8 @@
   <%= render "misses/list" %>
 <% end %>
 
-<h3>Mes miss catégorisées</h3>
-<br>
+<hr>
+
 <%= turbo_frame_tag "categorys" do %>
   <%= render @categories %>
 <% end %>

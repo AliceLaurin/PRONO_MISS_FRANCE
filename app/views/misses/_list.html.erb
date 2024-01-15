@@ -1,12 +1,12 @@
 <div data-autocomplete-search-target = "list">
 <% @sorted_misses.each do |miss| %>
-  <ul>
-    <%= miss.region %>
-    <%= image_tag "#{miss.photo}.jpg"%>
-    <%# <%= link_to "voir", year_miss_path(@year, miss) %>
-    <%# <%= link_to "voir", year_miss_path(@year, miss), remote: true, data: { turbo_frame: "modal" } %>
-    <%= link_to "voir", new_year_miss_category_path(@year, miss), remote: true, data: { turbo_frame: "modal" } %>
-  </ul>
+  <%= link_to new_year_miss_category_path(@year, miss), remote: true, data: { turbo_frame: "modal" } do %>
+    <div class="card_miss">
+      <div class="miss_item">
+        <div><%= image_tag "#{miss.photo}.jpg", style: 'height:72px;width:72px;border-radius:50px;margin-left:10px;margin-right:30px'%></div>
+        <div><h5><%=miss.region %></h5></div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 </div>
-

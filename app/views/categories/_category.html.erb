@@ -1,34 +1,75 @@
 
   <% if category.critere == "bombe" && category.miss.year == @year%>
+
     <%= turbo_frame_tag "category_#{category.id}" do %>
-    <ul>
-      <%= category.miss.region %> 🔥
-      <%= image_tag "#{category.miss.photo}.jpg"%>
-      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
-    </ul>
+      <%= link_to edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } do%>
+        <div class="card_miss">
+          <div class="miss_item">
+            <div>
+              <div class="miss_detail">
+                <%= image_tag "#{category.miss.photo}.jpg", style: 'height:72px;width:72px;border-radius:50px;margin-left:10px;margin-right:30px'%>
+                <div class="miss_region"><h5><%= category.miss.region %></h5></div>
+              </div>
+            </div>
+            <div>
+              <div class="picto_miss">🔥</div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% elsif category.critere == "mignonne" && category.miss.year == @year%>
     <%= turbo_frame_tag "category_#{category.id}" do %>
-    <ul>
-      <%= category.miss.region %> 💁🏼‍♀️
-      <%= image_tag "#{category.miss.photo}.jpg"%>
-      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
-    </ul>
+      <%= link_to edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } do%>
+        <div class="card_miss">
+          <div class="miss_item">
+            <div>
+              <div class="miss_detail">
+                <%= image_tag "#{category.miss.photo}.jpg", style: 'height:72px;width:72px;border-radius:50px;margin-left:10px;margin-right:30px'%>
+                <div class="miss_region"><h5><%= category.miss.region %></h5></div>
+              </div>
+            </div>
+            <div>
+              <div class="picto_miss">💁🏼‍♀️</div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% elsif category.critere == "deg" && category.miss.year == @year%>
     <%= turbo_frame_tag "category_#{category.id}" do %>
-    <ul>
-      <%= category.miss.region %> 🚛
-      <%= image_tag "#{category.miss.photo}.jpg"%>
-      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
-    </ul>
+      <%= link_to edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } do %>
+        <div class="card_miss">
+          <div class="miss_item">
+            <div>
+              <div class="miss_detail">
+                <%= image_tag "#{category.miss.photo}.jpg", style: 'height:72px;width:72px;border-radius:50px;margin-left:10px;margin-right:30px'%>
+                <div class="miss_region"><h5><%= category.miss.region %></h5></div>
+              </div>
+            </div>
+            <div>
+              <div class="picto_miss">🚛</div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% elsif category.critere == "pas ouf" && category.miss.year == @year%>
     <%= turbo_frame_tag "category_#{category.id}" do %>
-    <ul>
-      <%= category.miss.region %> 🤔
-      <%= image_tag "#{category.miss.photo}.jpg"%>
-      <%= link_to "voir", edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } %>
-    </ul>
+      <%= link_to edit_year_miss_category_path(@year, category.miss, category), remote: true, data: { turbo_frame: "modal" } do %>
+        <div class="card_miss">
+          <div class="miss_item">
+            <div>
+              <div class="miss_detail">
+                <%= image_tag "#{category.miss.photo}.jpg", style: 'height:72px;width:72px;border-radius:50px;margin-left:10px;margin-right:30px'%>
+                <div class="miss_region"><h5><%= category.miss.region %></h5></div>
+              </div>
+            </div>
+            <div>
+              <div class="picto_miss">🤔</div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
