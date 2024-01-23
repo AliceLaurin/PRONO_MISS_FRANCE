@@ -1,0 +1,67 @@
+
+.my_fifteen_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  gap: 10px;
+}
+
+.myfifteen-item, .add_fifteen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.my_fifteen_list img {
+  border-radius: 50%; /* Makes the images circular */
+  width: 97px; /* Fixed width */
+  height: 97px; /* Fixed height */
+  // border:1px solid #D1589E;
+  object-fit: cover; /* Ensure the images cover the area without distortion */
+}
+
+.my_fifteen_list h5 {
+  margin-top: 5px; /* Spacing above the region name */
+  margin-bottom: 5px; /* Spacing below the region name */
+}
+
+/* Add styles for your 'D' buttons here */
+
+
+.miss_details_15{
+  font-family: 'Albert Sans SemiBold', sans-serif;
+  font-size: 15px;
+  color:white;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.myfifteen-item {
+  position: relative; /* Needed for absolute positioning of the delete button */
+  /* Other styles remain the same */
+}
+
+.delete-button {
+  position: absolute;
+  top: 0; /* Adjust as needed */
+  right: 0; /* Adjust as needed */
+  background: none; /* Removes any default styling, use if needed */
+  border: none; /* Removes any default styling, use if needed */
+  cursor: pointer; /* To indicate it's clickable */
+  padding: 0; /* Removes padding, adjust if needed */
+}
+
+.delete-icon {
+  width: 24px; /* Size of the delete icon */
+  height: 24px; /* Size of the delete icon */
+  /* Add any other styles for your icon */
+}
+
+.add_fifteen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:97px;
+  width:97px;
+  position: relative;
+}

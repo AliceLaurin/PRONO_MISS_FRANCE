@@ -19,9 +19,11 @@
 
 body {
   background: linear-gradient(#585F9D, #383564);
-  // height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   position: relative;
   margin-bottom: 100px;
+
 }
 
 h1 {

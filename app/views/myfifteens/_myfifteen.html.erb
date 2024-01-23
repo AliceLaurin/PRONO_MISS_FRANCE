@@ -1,10 +1,12 @@
 <%= turbo_frame_tag "myfifteen_#{myfifteen.id}" do %>
-  <ul>
+  <div class="myfifteen-item">
     <%= image_tag "#{myfifteen.miss.photo}.jpg" %>
-    <%= myfifteen.miss.region %>
+    <div class="miss_details_15"><%= myfifteen.miss.region %></div>
     <% if myfifteen.my_miss_france_guess == "1" %>
-      <%= image_tag "couronne.svg" %>
+      <%= image_tag "couronne.svg", class: 'myfifteen-crown' %>
     <% end %>
-    <%= button_to 'Destroy', year_myfifteen_path(@year, myfifteen), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'destroy-button', 'data-url': year_myfifteen_path(@year, myfifteen), 'data-turbo-frame': "myfifteen_#{myfifteen.id}" %>
-  </ul>
+    <%= button_to year_myfifteen_path(@year, myfifteen), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'delete-button', 'data-url': year_myfifteen_path(@year, myfifteen), 'data-turbo-frame': "myfifteen_#{myfifteen.id}" do %>
+      <%= image_tag "cross.svg", class: 'delete-icon', style: 'height:20px;width:20px' %>
+    <% end %>
+  </div>
 <% end %>

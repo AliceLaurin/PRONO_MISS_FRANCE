@@ -1,13 +1,14 @@
 <div>
   <h1>Mon top 15</h1>
   <%= turbo_frame_tag "myfifteens" do %>
-    <%= render @myfifteens %>
-  <% end %>
-
-  <% (15 - @myfifteens.count).times do %>
-    <div>
-      <%= link_to new_year_myfifteen_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
-        <%= image_tag "add_miss.svg" %>
+    <div class="my_fifteen_list">
+      <%= render @myfifteens %>
+      <% (15 - @myfifteens.count).times do %>
+        <%= link_to new_year_myfifteen_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
+          <div class='add_fifteen'>
+            <%= image_tag "add_miss.svg" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>

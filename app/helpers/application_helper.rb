@@ -14,4 +14,20 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def category_emoji(category)
+    case category
+    when "bombe"
+      "🔥"
+    when "mignonne"
+      "💁🏼‍♀️"
+    when "pas ouf"
+      "🤔"
+    when "deg"
+      "🚛"
+    else
+      "" # Default case
+    end
+  end
+  
 end
