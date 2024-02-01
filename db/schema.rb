@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_08_171817) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_154735) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_08_171817) do
     t.string "my_miss_france_guess"
     t.bigint "miss_id"
     t.bigint "year_id"
+    t.boolean "completed"
     t.index ["miss_id"], name: "index_myfifteens_on_miss_id"
     t.index ["user_id"], name: "index_myfifteens_on_user_id"
     t.index ["year_id"], name: "index_myfifteens_on_year_id"

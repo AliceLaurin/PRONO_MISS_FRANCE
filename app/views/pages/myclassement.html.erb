@@ -1,6 +1,14 @@
-<ul>
-  <li><%= link_to "Mon top 15", year_myfifteens_path(@year) %></li>
-  <li><%= link_to "Mon top 5", year_mycinqs_path(@year) %></li>
-  <li><%= link_to "Ma finale", year_my_winner_path(@year) %></li>
-</ul>
+
+<div class="list_of_groups">
+  <div class="card_group">
+    <h5><%= link_to "Mon top 15", year_myfifteens_path(@year) %></h5>
+  </div>
+  <div class="card_group">
+    <h5><%= link_to "Mon top 5", year_mycinqs_path(@year) %></h5>
+  </div>
+  <div class="card_group">
+    <h5><%= link_to "Ma finale", year_my_winner_path(@year) %></h5>
+  </div>
+</div>
+
 <%= render "shared/bottombar" %>

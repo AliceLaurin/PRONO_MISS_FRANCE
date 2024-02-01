@@ -1,7 +1,24 @@
 <div>
   <h1>Mon top 15</h1>
-  <%= turbo_frame_tag "myfifteens" do %>
-    <div class="my_fifteen_list">
+  <%# <%= turbo_frame_tag "myfifteens" do %>
+
+  <% if @myfifteens.count == 15 %>
+    <div id="my_fifteen_list">
+        <% @myfifteens.each do |myfifteen|%>
+          <div class="myfifteen-item">
+            <%= image_tag "#{myfifteen.miss.photo}.jpg" %>
+            <div class="miss_details_15"><%= myfifteen.miss.region %></div>
+            <% if myfifteen.my_miss_france_guess == "1" %>
+              <%= image_tag "couronne.svg", class: 'myfifteen-crown' %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+    <div class="list_of_groups">
+      <%= link_to "Comparer avec les autres", myfifteens_others_year_path(@year), class: "main_button" %>
+    </div>
+  <% else %>
+    <div id="my_fifteen_list">
       <%= render @myfifteens %>
       <% (15 - @myfifteens.count).times do %>
         <%= link_to new_year_myfifteen_path(@year), remote: true, data: { turbo_frame: "modal" } do %>
@@ -11,8 +28,9 @@
         <% end %>
       <% end %>
     </div>
+    <div class="list_of_groups">
+      <%= link_to "Valider mon top 15", myfifteens_others_year_path(@year), class: "main_button" %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "Valider", myfifteens_others_year_path(@year) %>
-<%= render "shared/bottombar" %>
+  <%= render "shared/bottombar" %>

@@ -17,7 +17,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Add this line */
-
 }
 
 
@@ -29,17 +28,30 @@
   padding-top: 2px;
   margin-bottom: 10px;
   // margin-left: 51px;
- }
+}
 
- .status_over_show{
-   width: 56px;
-   height: 21px;
-   background: rgba(217, 217, 217, 0.4); /* Use RGBA for semi-transparent background */
-   border-radius: 10px ;
-   padding-top: 2px;
-  }
+.status_over_show{
+  width: 56px;
+  height: 21px;
+  background: rgba(217, 217, 217, 0.4); /* Use RGBA for semi-transparent background */
+  border-radius: 10px ;
+  padding-top: 2px;
+}
 
 
   a:link{
     text-decoration: none;
   }
+
+.card_group h5 a {
+    color: white; /* Set text color to white */
+    text-decoration: none; /* Remove text decoration */
+}
+
+.card_group h5 a:visited {
+    color: white; /* Optional: Set text color to white for visited links */
+}
+
+.card_group h5 a:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
